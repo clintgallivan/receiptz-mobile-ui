@@ -12,11 +12,14 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'stretch',
     alignItems: 'center',
-    borderColor: Colors.primary,
-    borderWidth: 1,
+    justifyContent: 'center',
+    backgroundColor: "transparent",
+    borderColor: Colors.white,
+    borderWidth: 2,
     marginTop: 10,
     padding: 5,
-    borderRadius: 5,
+    height: 50,
+    borderRadius: 30.5,
   },
 });
 

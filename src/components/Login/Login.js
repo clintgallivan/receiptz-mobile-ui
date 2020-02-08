@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Button from '../common/Button';
+import Logo from '../common/Logo';
 import TextField from '../common/TextField';
 import ErrorView from '../common/ErrorView';
 import styles from './styles';
@@ -40,26 +41,26 @@ function Login(props) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.formContainer, ShadowStyles.shadow]}>
-        <Text style={TextStyles.fieldTitle}>
-          {strings.email}
-        </Text>
-        <TextField
-          placeholder={strings.email}
-          onChangeText={emailChanged}
-          value={email}
-        />
-        <Text style={TextStyles.fieldTitle}>
-          {strings.password}
-        </Text>
-        <TextField
-          placeholder={strings.password}
-          value={password}
-          onChangeText={passwordChanged}
-          secureTextEntry
-        />
+      <Logo />
+      <View style={styles.entryContainer}>
+        <View style={[styles.formContainer]}>
+          <TextField
+            placeholder={strings.email}
+            onChangeText={emailChanged}
+            value={email}
+          />
+        </View>
+        <View style={[styles.formContainer]}>
+          <TextField
+            placeholder={strings.password}
+            value={password}
+            onChangeText={passwordChanged}
+            secureTextEntry
+          />
+        </View>
         <ErrorView errors={errors} />
         <Button
+          style={styles.login}
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.login}
         />

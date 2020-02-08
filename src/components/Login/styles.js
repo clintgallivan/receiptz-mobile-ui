@@ -4,7 +4,7 @@ import Colors from 'helpers/Colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: Colors.primary,
   },
@@ -12,9 +12,23 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: Colors.white,
-    marginHorizontal: 40,
-    padding: 20,
+    marginBottom: 20,
+    backgroundColor: Colors.secondary,
+    padding: 10,
+  },
+  entryContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'flex-end',
+    alignContent: 'space-between',
+    marginVertical: 40,
+    padding: 40,
+    justifyContent: 'space-evenly',
+  //  backgroundColor: Colors.gray,
+  },
+  login: {
+    alignSelf: 'stretch',
+    marginTop: 70,
+    marginHorizontal: 20
   },
 });
 

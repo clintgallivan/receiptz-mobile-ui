@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
-  TextInput,
+  Text,
   StyleSheet,
 } from 'react-native';
 import TextStyles from 'helpers/TextStyles';
@@ -10,29 +10,26 @@ import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'stretch',
-    marginVertical: 1,
+    alignSelf: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
   },
-  line: {
-    backgroundColor: Colors.gray,
-    marginTop: 2,
-    height: 1,
-    flexDirection: 'column',
-    alignSelf: 'stretch',
-  },
-  field: {
-    alignSelf: 'stretch',
+  logo: {
+    backgroundColor: "transparent",
+    color: Colors.white,
+    opacity: 1,
+    fontSize: 46,
+    textAlign: "center"
   },
 });
 
 const TextField = props => (
   <View style={styles.container}>
-    <TextInput
-      placeholderTextColor={Colors.white}
+    <Text
       {...props}
-      style={[TextStyles.textField, styles.field, props.style]}
+      style={[styles.logo, props.style]}
       underlineColorAndroid="transparent"
-    />
+    > RECEIPTZ </Text>
   </View>
 );
 

@@ -10,11 +10,13 @@ const styles = StyleSheet.create({
   textField: {
     fontSize: 15,
     fontWeight: 'normal',
+    color: Colors.white
   },
   fieldTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: Colors.primary,
+    alignSelf: 'center',
+    color: Colors.white,
   },
   error: {
     fontSize: 14,
