@@ -26,7 +26,7 @@ class UserController {
     new Promise((resolve, reject) => {
       if (email !== 'a@a.com' && password !== '') {
         setTimeout(
-          () => resolve({ name: 'Jorge' }),
+          () => resolve({ name: 'Jorge', _id: '1234'}),
           1000,
         );
       } else {

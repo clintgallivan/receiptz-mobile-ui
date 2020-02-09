@@ -1,34 +1,63 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   View,
   Text,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './styles';
+
+import Logo from '../common/Logo';
 
 import TextStyles from 'helpers/TextStyles';
 import strings from 'localization';
 import getUser from 'selectors/UserSelectors';
+import ErrorView from '../common/ErrorView';
 
-function Home() {
+import getData from 'selectors/DataSelectors';
+import HeaderStyles from 'helpers/HeaderStyles';
+import Colors from 'helpers/Colors';
+import errorsSelector from 'selectors/ErrorSelectors';
+import { isLoadingSelector } from 'selectors/StatusSelectors';
+import {getUserReceipts, actionTypes} from 'actions/DataActions'
+import { FlatList } from 'react-native-gesture-handler';
+
+
+function Home(props) {
   const user = useSelector(state => getUser(state));
-  const getMessage = useCallback(() => `${strings.homeMessage} ${user && user.name}`, [user]);
+  const data = useSelector(state => getData(state));
 
-  return (
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => isLoadingSelector([actionTypes.DATA], state));
+  const errors = useSelector(state => errorsSelector([actionTypes.DATA], state));
+  const _renderItem = ({item}) => {
+    return (
+      <Text>{item.metadata.date}</Text>
+    )
+  }
+  useEffect(() => {
+    dispatch(getUserReceipts(user._id))
+    console.log('data', {data, isLoading, errors})
+  }, []);
+
+  return errors.length > 0 ? (<ErrorView errors={errors}/>): isLoading ? (
+    <View><Text>Loading...</Text></View>
+  ) : (
     <View style={styles.container}>
-      <Text style={TextStyles.lightTitle}>
-        {strings.home}
-      </Text>
-      <Text>
-        {getMessage()}
-      </Text>
+      <FlatList
+        data={data}
+        renderItem={_renderItem}
+      />
     </View>
   );
 }
 
 Home.navigationOptions = {
-  title: strings.home,
+  title: "RECEIPTZ",
+  headerTitleStyle: {
+    color: Colors.white
+  },
+  headerStyle: HeaderStyles.appHeader
 };
 
 export default Home;

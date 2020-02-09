@@ -21,6 +21,7 @@ export const notStartedSelector = (actions, state) => actions.reduce(
 
 export const isLoadingSelector = (actions, state) => actions.reduce(
   (prevState, value) => {
+    console.log('status', state.status)
     const status = state.status[`${value}`] || NOT_STARTED;
     return prevState || status === LOADING;
   },

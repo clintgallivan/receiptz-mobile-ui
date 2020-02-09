@@ -4,6 +4,7 @@ export default (actions, state) => actions.reduce(
     if (error) {
       prevState.push(error);
     }
+    console.log('prevSta', {prevState, error})
     return prevState;
   },
   [],
