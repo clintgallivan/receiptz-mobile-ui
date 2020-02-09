@@ -25,13 +25,10 @@ class ReceiptsController {
     */
       // This is a mocked example to simulate api behavior
       new Promise((resolve, reject) => {
-        if (true) {
+        if (userId) {
             resolve(data)
         } else {
-          setTimeout(
-            () => reject(new Error('no data found')),
-            1000,
-          );
+          throw reject(new Error('no data found'))
         }
       });
   
