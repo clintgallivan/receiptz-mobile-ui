@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import {
   View,
   Text,
+  TouchableOpacity
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -32,7 +33,20 @@ function Home(props) {
   const errors = useSelector(state => errorsSelector([actionTypes.DATA], state));
   const _renderItem = ({item}) => {
     return (
-      <Text>{item.metadata.date}</Text>
+      <View style={styles.row}>
+        <TouchableOpacity style={styles.buttonList}>
+          <View style={styles.receiptInfo}>
+            <Text style={styles.nameOfStore}>
+              {item.metadata.storeName}
+            </Text>
+            <Text style={styles.dateOfPurchase}>
+              {item.metadata.date}
+            </Text>
+          </View>
+          <Text style={styles.viewText}>View</Text>
+        </TouchableOpacity>
+        <View style={styles.line}/>
+      </View>
     )
   }
   useEffect(() => {

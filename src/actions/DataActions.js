@@ -29,7 +29,6 @@ export const getUserReceipts = (user_id) => async (dispatch) => {
     const data = await ReceiptsController.getUserRecepts(user_id);
     dispatch(requestSuccess(data));
   } catch (error) {
-    console.log('err getting data', error.message)
     dispatch(requestError(error.message));
   }
 };
