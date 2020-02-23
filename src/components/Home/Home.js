@@ -10,7 +10,7 @@ import styles from './styles';
 
 import Logo from '../common/Logo';
 
-import TextStyles from 'helpers/TextStyles';
+import ListButton from '../common/ListButton';
 import strings from 'localization';
 import getUser from 'selectors/UserSelectors';
 import ErrorView from '../common/ErrorView';
@@ -33,20 +33,11 @@ function Home(props) {
   const errors = useSelector(state => errorsSelector([actionTypes.DATA], state));
   const _renderItem = ({item}) => {
     return (
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.buttonList}>
-          <View style={styles.receiptInfo}>
-            <Text style={styles.nameOfStore}>
-              {item.metadata.storeName}
-            </Text>
-            <Text style={styles.dateOfPurchase}>
-              {item.metadata.date}
-            </Text>
-          </View>
-          <Text style={styles.viewText}>View</Text>
-        </TouchableOpacity>
-        <View style={styles.line}/>
-      </View>
+        <ListButton
+          headerPrimary={item.metadata.storeName}
+          headerSecondary={item.metadata.date}
+          linkDescription={'View'}
+        />
     )
   }
   useEffect(() => {

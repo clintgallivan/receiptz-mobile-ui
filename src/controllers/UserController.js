@@ -1,4 +1,5 @@
 // import httpClient from './HttpClient';
+import exUser from '../exampleData/exUser.json'
 
 class UserController {
   constructor() {
@@ -26,7 +27,7 @@ class UserController {
     new Promise((resolve, reject) => {
       if (email !== 'a@a.com' && password !== '') {
         setTimeout(
-          () => resolve({ name: 'Jorge', _id: '1234'}),
+          () => resolve(exUser),
           1000,
         );
       } else {

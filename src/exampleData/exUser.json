@@ -1,0 +1,10 @@
+{
+    "_id": "1234",
+    "metadata": {
+        "userName": "jJones",
+        "email": "JorgeJones@gmail.com",
+        "name": {"first": "Jorge", "last": "Jones", "middle": null}
+    },
+    "cards": [],
+    "receipts": []
+}
