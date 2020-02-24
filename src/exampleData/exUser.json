@@ -3,8 +3,14 @@
     "metadata": {
         "userName": "jJones",
         "email": "JorgeJones@gmail.com",
-        "name": {"first": "Jorge", "last": "Jones", "middle": null}
+        "name": {"first": "Jorge", "last": "Jones", "middle": null},
+        "phoneNumber": "805-258-9999"
     },
-    "cards": [],
+    "cards": [
+        {"bankName": "BofA", "lastFourDigits": 1234},
+        {"bankName": "BofA", "lastFourDigits": 1234},
+        {"bankName": "BofA", "lastFourDigits": 1234},
+        {"bankName": "BofA", "lastFourDigits": 1234}
+    ],
     "receipts": []
 }

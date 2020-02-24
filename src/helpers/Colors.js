@@ -4,5 +4,6 @@ export default {
   white: '#FAFAFA',
   gray: '#CFD8DC',
   black: '#000000',
-  secondary: 'rgba(69,151,154,1)'
+  secondary: 'rgba(69,151,154,1)',
+  darkGray: "rgba(109,114,120,1)"
 };

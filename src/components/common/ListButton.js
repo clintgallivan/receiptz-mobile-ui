@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     textAlign: "left"
   },
   headerSecondary: {
-    color: Colors.black,
+    color: Colors.darkGray,
     opacity: 1,
     fontSize: 12,
     textAlign: "left",

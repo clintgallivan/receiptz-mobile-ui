@@ -1,4 +1,5 @@
 export default {
+  logo: 'RECEIPTZ',
   login: 'Login',
   loading: 'Loading',
   password: 'Password',

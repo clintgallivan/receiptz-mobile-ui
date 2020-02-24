@@ -58,7 +58,7 @@ function Home(props) {
 }
 
 Home.navigationOptions = {
-  title: "RECEIPTZ",
+  title: strings.logo,
   headerTitleStyle: {
     color: Colors.white
   },
