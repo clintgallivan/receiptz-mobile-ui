@@ -26,6 +26,9 @@ function Profile(props) {
   const user = useSelector(state => getUser(state));
   const dispatch = useDispatch();
   const logoutUser = useCallback(() => dispatch(logout()), [dispatch]);
+
+
+
 //TODO find out how to remove user w/out throwing error
   let cardData = user ? user.cards.map(({bankName, lastFourDigits}, id) => {
     return {id, info: [bankName, lastFourDigits]}
@@ -68,7 +71,7 @@ function Profile(props) {
       fontSize: 43
     }
   }
-  const sqrProfImg = deriveSqrProfImg(styles.displayImage.width)
+  const sqrProfImg = deriveSqrProfImg(132)
   const _renderItem = ({item}) => {
     return (
       <ListButton
@@ -99,8 +102,8 @@ function Profile(props) {
     <View style={styles.container}>
 
 
-      <View style={styles.profileHeader}>
-        <Svg viewBox={`-0 -0 ${sqrProfImg.d} ${sqrProfImg.d}`} style={styles.displayImage}>
+      <View style={styles.profileHeader}>          
+      <Svg viewBox={`-0 -0 ${sqrProfImg.d} ${sqrProfImg.d}`} width={sqrProfImg.d} height={sqrProfImg.d}>
           <Circle
             fill={Colors.gray} //"rgba(216,216,216,1)"
             fillOpacity={1}
@@ -117,7 +120,8 @@ function Profile(props) {
           >{user ? `${user.metadata.name.first.charAt(0)}${user.metadata.name.last.charAt(0)}` : ""}
           </SVGText>
           <Circle
-            fill={Colors.secondary}
+            onPress={() => console.log('butoto pressed')}
+            fill={Colors.secondary} //todo change colors based on click
             fillOpacity={1}
             cx={sqrProfImg.cPlus}
             cy={sqrProfImg.cPlus}
@@ -139,7 +143,10 @@ function Profile(props) {
             strokeOpacity={1}
             d={sqrProfImg.dH}
           ></Path>
-        </Svg>
+
+
+          </Svg>
+
       </View>
 
       <View style={styles.displayName}>

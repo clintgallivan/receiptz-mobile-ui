@@ -20,6 +20,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //position: "absolute",
   },
+  displayButton: {
+    //top: 0,
+    //left: 0,
+    width: 132,
+    height: 132,
+    backgroundColor: Colors.black,//'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    //position: "absolute",
+  },
   displayName: {
   
     //top: 0,
@@ -51,7 +62,7 @@ const styles = StyleSheet.create({
   },
   profileHeader: {
     justifyContent: 'center',
-    alignContent: 'space-between',
+    alignContent: 'center',
     alignItems: 'center',
     margin: 20,
     backgroundColor: 'transparent',
