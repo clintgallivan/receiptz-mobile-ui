@@ -1,6 +1,9 @@
 export default {
   logo: 'RECEIPTZ',
   login: 'Login',
+  signup: 'Sign Up',
+  firstName: 'First Name',
+  lastName: 'Last Name',
   loading: 'Loading',
   password: 'Password',
   email: 'Email',

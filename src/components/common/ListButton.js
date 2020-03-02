@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     opacity: 1,
     fontSize: 12,
-    textAlignVertical: "bottom"
+    textAlignVertical: "bottom",
   },
   line: {
     backgroundColor: Colors.gray,

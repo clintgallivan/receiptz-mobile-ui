@@ -40,3 +40,13 @@ export const logout = () => (dispatch) => {
   UserController.logout();
   dispatch(logoutRequest());
 };
+
+export const signup = (email, password, firstName, lastName) => async (dispatch) => {
+  dispatch(loginRequest());
+  try {
+    const user = await UserController.signup(email, password, firstName, lastName);
+    dispatch(loginSuccess(user));
+  } catch (error) {
+    dispatch(loginError(error.message));
+  }
+};

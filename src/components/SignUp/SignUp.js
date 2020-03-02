@@ -19,9 +19,11 @@ import getUser from 'selectors/UserSelectors';
 import errorsSelector from 'selectors/ErrorSelectors';
 import { isLoadingSelector } from 'selectors/StatusSelectors';
 import strings from 'localization';
-import { login, actionTypes } from 'actions/UserActions';
+import { signup, actionTypes } from 'actions/UserActions';
 
-function Login(props) {
+function SignUp(props) {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,7 +32,9 @@ function Login(props) {
   const errors = useSelector(state => errorsSelector([actionTypes.LOGIN], state));
 
   const dispatch = useDispatch();
-  const loginUser = useCallback(() => dispatch(login(email, password)), [email, password, dispatch]);
+  const loginUser = useCallback(() => dispatch(signup(email, password, firstName, lastName)), [email, password, firstName, lastName, dispatch]);
+  const firstNameChanged = useCallback(value => setFirstName(value), []);
+  const lastNameChanged = useCallback(value => setLastName(value), []);
   const passwordChanged = useCallback(value => setPassword(value), []);
   const emailChanged = useCallback(value => setEmail(value), []);
 
@@ -44,6 +48,20 @@ function Login(props) {
     <View style={styles.container}>
       <Logo />
       <View style={styles.entryContainer}>
+      <View style={[styles.formContainer]}>
+          <TextField
+            placeholder={strings.firstName}
+            onChangeText={firstNameChanged}
+            value={firstName}
+          />
+        </View>
+        <View style={[styles.formContainer]}>
+          <TextField
+            placeholder={strings.lastName}
+            value={lastName}
+            onChangeText={lastNameChanged}
+          />
+        </View>
         <View style={[styles.formContainer]}>
           <TextField
             placeholder={strings.email}
@@ -63,15 +81,13 @@ function Login(props) {
         <Button
           style={styles.login}
           onPress={loginUser}
-          title={isLoading ? strings.loading : strings.login}
+          title={isLoading ? strings.loading : strings.signup}
         />
         <View style={styles.signup}>
         <TouchableOpacity>
 
-        <Text style={styles.signupText} onPress={() => {
-            props.navigation.navigate('SignUp')}
-          }>
-          {strings.signup}
+        <Text style={styles.signupText} onPress={() => props.navigation.navigate('Login')}>
+          {strings.login}
         </Text>
         </TouchableOpacity>
         </View>
@@ -80,12 +96,12 @@ function Login(props) {
   );
 }
 
-Login.navigationOptions = {
+SignUp.navigationOptions = {
   header: null,
 };
 
-Login.propTypes = {
+SignUp.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-export default Login;
+export default SignUp;

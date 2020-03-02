@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
     alignItems: 'center',
-    marginVertical: 10,
+
+    marginTop: 80,
   },
   logo: {
     backgroundColor: "transparent",
