@@ -37,6 +37,8 @@ target 'ReceiptzMobile' do
   pod ‘ReactNativeLocalization’,
     :path => “../node_modules/react-native-localization”
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'ReceiptzMobileTests' do
     inherit! :search_paths
     # Pods for testing

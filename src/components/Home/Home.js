@@ -14,6 +14,7 @@ import ListButton from '../common/ListButton';
 import strings from 'localization';
 import getUser from 'selectors/UserSelectors';
 import ErrorView from '../common/ErrorView';
+import SearchBar from '../common/SearchBar';
 
 import getData from 'selectors/DataSelectors';
 import HeaderStyles from 'helpers/HeaderStyles';
@@ -21,7 +22,7 @@ import Colors from 'helpers/Colors';
 import errorsSelector from 'selectors/ErrorSelectors';
 import { isLoadingSelector } from 'selectors/StatusSelectors';
 import {getUserReceipts, actionTypes} from 'actions/DataActions'
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TextInput } from 'react-native-gesture-handler';
 
 
 function Home(props) {
@@ -49,6 +50,7 @@ function Home(props) {
     <View><Text>Loading...</Text></View>
   ) : (
     <View style={styles.container}>
+      <SearchBar />
       <FlatList
         data={data}
         renderItem={_renderItem}
