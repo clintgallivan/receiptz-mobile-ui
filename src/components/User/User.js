@@ -6,9 +6,11 @@ import {
 } from 'react-native';
 
 const User = () => {
-  return <View>
+  return (
+  <View>
     <Text>User Screen</Text>
   </View>
+  )
 };
 
 

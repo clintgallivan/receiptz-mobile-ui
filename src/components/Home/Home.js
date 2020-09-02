@@ -34,11 +34,15 @@ function Home(props) {
   const errors = useSelector(state => errorsSelector([actionTypes.DATA], state));
   const _renderItem = ({item}) => {
     return (
+      <View style={styles.listButtonContainer}>
+      <Text style={styles.ellipse}>Yo</Text>
         <ListButton
           headerPrimary={item.metadata.storeName}
           headerSecondary={item.metadata.date}
           linkDescription={'View'}
         />
+        </View>
+        
     )
   }
   useEffect(() => {
@@ -62,7 +66,7 @@ function Home(props) {
 Home.navigationOptions = {
   title: strings.logo,
   headerTitleStyle: {
-    color: Colors.white
+    color: Colors.primary
   },
   headerStyle: HeaderStyles.appHeader
 };

@@ -42,12 +42,12 @@ const TabIcon = ({ icon, tintColor }) => (// eslint-disable-line
 
 const ProfileStack = createStackNavigator({ Profile });
 const HomeStack = createStackNavigator({ Home });
-// const UserStack = createStackNavigator({ User }); //* This needs to be addressed
+const UserStack = createStackNavigator({ User }); //* This needs to be addressed
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeStack,
     Profile: ProfileStack,
-    // User: UserStack, //* This needs to be addressed
+    User: UserStack, //* This needs to be addressed
   },
   {
     tabBarPosition: 'bottom',

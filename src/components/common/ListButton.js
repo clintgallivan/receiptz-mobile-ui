@@ -86,14 +86,18 @@ const styles = StyleSheet.create({
     color: "#233064",
     // opacity: 1,
     fontSize: 17,
-    textAlign: "left"
+    textAlign: "left",
+    fontFamily: "AvenirNext-Bold"
+    
   },
   headerSecondary: {
     color: "#C4C4C4",
     opacity: 1,
     fontSize: 11,
     textAlign: "left",
-    marginTop: 7
+    marginTop: 7,
+    fontFamily: "AvenirNext-Regular"
+
   },
   linkDescription: {
     color: Colors.primary,

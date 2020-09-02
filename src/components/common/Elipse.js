@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import TextStyles from 'helpers/TextStyles';
 import Colors from 'helpers/Colors';
+import Svg, { Path, Circle,  Text as SVGText } from "react-native-svg";
 
 const styles = StyleSheet.create({
   button: {

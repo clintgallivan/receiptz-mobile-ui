@@ -2,6 +2,7 @@
     {
         "metadata": {
             "merchant_id": "merchants_id",
+            "merchantType": "food",
             "storeName": "Cafe Nuvu",
             "date": "08, May 2019",
             "subTotal": 26.35,
