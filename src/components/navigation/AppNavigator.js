@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import Profile from '../Profile';
 import Home from '../Home';
-// import User from '../User'; //* This needs to be addressed
+import User from '../User'; //* This needs to be addressed
 
 
 import receiptIcon from 'assets/ic_receipt/Receipt.png';
