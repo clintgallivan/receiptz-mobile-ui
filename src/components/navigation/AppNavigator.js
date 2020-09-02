@@ -5,15 +5,27 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import Profile from '../Profile';
 import Home from '../Home';
+// import User from '../User'; //* This needs to be addressed
 
-import homeIcon from 'assets/ic_home/ic_home.png';
-import settingsIcon from 'assets/ic_settings/ic_settings.png';
+
+import receiptIcon from 'assets/ic_receipt/Receipt.png';
+import profileIcon from 'assets/ic_profile/Profile.png';
+import savedIcon from 'assets/ic_saved/Saved.png';
+import settingsIcon from 'assets/ic_settings/Settings.png';
+
+
+
 import Colors from 'helpers/Colors';
+
 
 const iconForTab = ({ state }) => {
   switch (state.routeName) {
     case 'Home':
-      return homeIcon;
+      return receiptIcon;
+    case 'User':
+      return profileIcon;
+    case 'Saved':
+      return savedIcon;
     case 'Profile':
       return settingsIcon;
     default:
@@ -30,18 +42,20 @@ const TabIcon = ({ icon, tintColor }) => (// eslint-disable-line
 
 const ProfileStack = createStackNavigator({ Profile });
 const HomeStack = createStackNavigator({ Home });
+// const UserStack = createStackNavigator({ User }); //* This needs to be addressed
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeStack,
     Profile: ProfileStack,
+    // User: UserStack, //* This needs to be addressed
   },
   {
     tabBarPosition: 'bottom',
     tabBarOptions: {
-      activeTintColor: Colors.primary,
-      inactiveTintColor: Colors.gray,
+      activeTintColor: Colors.white,
+      inactiveTintColor: Colors.inactive,
       style: {
-        backgroundColor: Colors.White,
+        backgroundColor: Colors.primary,
       },
     },
     defaultNavigationOptions: ({ navigation }) => ({
