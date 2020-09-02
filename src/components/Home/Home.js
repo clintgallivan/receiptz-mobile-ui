@@ -66,7 +66,7 @@ function Home(props) {
 Home.navigationOptions = {
   title: strings.logo,
   headerTitleStyle: {
-    color: Colors.primary
+    color: Colors.white
   },
   headerStyle: HeaderStyles.appHeader
 };

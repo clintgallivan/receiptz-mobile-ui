@@ -5,7 +5,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import Profile from '../Profile';
 import Home from '../Home';
-import User from '../User'; //* This needs to be addressed
+import User from '../User';
+import Saved from '../Saved';
 
 
 import receiptIcon from 'assets/ic_receipt/Receipt.png';
@@ -16,6 +17,7 @@ import settingsIcon from 'assets/ic_settings/Settings.png';
 
 
 import Colors from 'helpers/Colors';
+import { create } from 'react-test-renderer';
 
 
 const iconForTab = ({ state }) => {
@@ -42,12 +44,14 @@ const TabIcon = ({ icon, tintColor }) => (// eslint-disable-line
 
 const ProfileStack = createStackNavigator({ Profile });
 const HomeStack = createStackNavigator({ Home });
-const UserStack = createStackNavigator({ User }); //* This needs to be addressed
+const UserStack = createStackNavigator({ User });
+const SavedStack = createStackNavigator({ Saved });
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeStack,
+    User: UserStack,
+    Saved: SavedStack,
     Profile: ProfileStack,
-    User: UserStack, //* This needs to be addressed
   },
   {
     tabBarPosition: 'bottom',

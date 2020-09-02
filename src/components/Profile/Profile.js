@@ -171,11 +171,11 @@ function Profile(props) {
   );
 }
 
+// Profile.navigationOptions = {
+//   title: strings.profile,
+// };
 Profile.navigationOptions = {
-  title: strings.profile,
-};
-Profile.navigationOptions = {
-  title: strings.logo,
+  title: strings.settings,
   headerTitleStyle: {
     color: Colors.white
   },
