@@ -177,7 +177,8 @@ function Profile(props) {
 Profile.navigationOptions = {
   title: strings.settings,
   headerTitleStyle: {
-    color: Colors.white
+    color: Colors.topTabText,
+    fontFamily: 'AvenirNext-Bold',
   },
   headerStyle: HeaderStyles.appHeader
 };

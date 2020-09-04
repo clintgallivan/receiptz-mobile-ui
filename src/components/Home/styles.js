@@ -11,14 +11,16 @@ const styles = StyleSheet.create({
   },
 
   listButtonContainer: {
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
-    // alignContent: 'stretch',
-    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    alignContent: 'stretch',
+    paddingHorizontal: 31,
+    flex: 1,
 
   },
   ellipse: {
+    flex: 1,
     // // fontSize: 20,
     // // marginTop: 20
     // flexDirection: 'row',

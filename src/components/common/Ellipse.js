@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  View,
   Text,
   TouchableOpacity,
   StyleSheet,
@@ -24,29 +25,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = props => (
-  <TouchableOpacity
-    {...props}
-    style={[styles.button, props.style]}
-  >
-    <Text
-      style={[TextStyles.fieldTitle, props.textStyle]}
-    >
-      {props.title}
-    </Text>
-  </TouchableOpacity>
+const Ellipse = () => (
+<Svg height="50" width="50">
+  <Circle cx="25" cy="25" r="15.5" fill="#41969F" />
+</Svg>
+
 );
 
-Button.propTypes = {
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
-  title: PropTypes.string,
-};
+// Ellipse.propTypes = {
+//   style: PropTypes.object,
+//   textStyle: PropTypes.object,
+//   title: PropTypes.string,
+// };
 
-Button.defaultProps = {
-  style: null,
-  textStyle: null,
-  title: '',
-};
+// Ellipse.defaultProps = {
+//   style: null,
+//   textStyle: null,
+//   title: '',
+// };
 
-export default Button;
+export default Ellipse;

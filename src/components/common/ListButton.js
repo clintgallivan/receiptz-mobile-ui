@@ -64,12 +64,13 @@ ListButton.defaultProps = {
 
 const styles = StyleSheet.create({
   row: {
-    backgroundColor: 'transparent',
-    alignSelf: 'stretch',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    marginHorizontal: 31,
-    height: 67,
+    flex: 8,
+    // backgroundColor: 'transparent',
+    // alignSelf: 'stretch',
+    // flexDirection: 'column',
+    // justifyContent: 'space-evenly',
+    // marginHorizontal: 31,
+    // height: 67,
   },
   buttonList: {
     alignSelf: 'stretch',

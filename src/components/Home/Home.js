@@ -15,6 +15,7 @@ import strings from 'localization';
 import getUser from 'selectors/UserSelectors';
 import ErrorView from '../common/ErrorView';
 import SearchBar from '../common/SearchBar';
+import Ellipse from '../common/Ellipse';
 
 import getData from 'selectors/DataSelectors';
 import HeaderStyles from 'helpers/HeaderStyles';
@@ -35,7 +36,9 @@ function Home(props) {
   const _renderItem = ({item}) => {
     return (
       <View style={styles.listButtonContainer}>
-      <Text style={styles.ellipse}>Yo</Text>
+        <Ellipse style={styles.ellipse}/>
+      {/* <Text style={styles.ellipse}>Yo</Text> */}
+      {/* <Text>Hello</Text> */}
         <ListButton
           headerPrimary={item.metadata.storeName}
           headerSecondary={item.metadata.date}
@@ -64,9 +67,10 @@ function Home(props) {
 }
 
 Home.navigationOptions = {
-  title: strings.logo,
+  title: strings.home,
   headerTitleStyle: {
-    color: Colors.white
+    color: Colors.topTabText,
+    fontFamily: 'AvenirNext-Bold'
   },
   headerStyle: HeaderStyles.appHeader
 };
