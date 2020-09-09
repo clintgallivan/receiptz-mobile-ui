@@ -61,6 +61,17 @@ const AppStack = createBottomTabNavigator(
       style: {
         backgroundColor: Colors.primary,
       },
+      tabStyle: {
+        // backgroundColor: 'black',
+        // flex: 1,
+        // justifyContent: 'flex-end',
+        marginTop: 19,
+        height: 35,
+        // width: 10
+      },
+      showLabel: false,
+      
+      
     },
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => (// eslint-disable-line
