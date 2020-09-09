@@ -3,7 +3,6 @@ import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
     marginTop: 20,
@@ -16,16 +15,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'stretch',
     paddingHorizontal: 31,
-    flex: 1,
-
-  },
-  ellipse: {
-    flex: 1,
-    // // fontSize: 20,
-    // // marginTop: 20
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'stretch',
   },
 });
 

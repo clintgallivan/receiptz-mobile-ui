@@ -36,7 +36,7 @@ function Home(props) {
   const _renderItem = ({item}) => {
     return (
       <View style={styles.listButtonContainer}>
-        <Ellipse style={styles.ellipse}/>
+        <Ellipse/>
       {/* <Text style={styles.ellipse}>Yo</Text> */}
       {/* <Text>Hello</Text> */}
         <ListButton

@@ -64,7 +64,7 @@ ListButton.defaultProps = {
 
 const styles = StyleSheet.create({
   row: {
-    flex: 8,
+    flex: 6,
     // backgroundColor: 'transparent',
     // alignSelf: 'stretch',
     // flexDirection: 'column',
