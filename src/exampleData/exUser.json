@@ -12,5 +12,6 @@
         {"bankName": "BofA", "lastFourDigits": 1234},
         {"bankName": "BofA", "lastFourDigits": 1234}
     ],
-    "receipts": []
+    "receipts": [],
+    "count": "100"
 }

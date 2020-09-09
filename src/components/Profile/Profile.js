@@ -120,7 +120,7 @@ function Profile(props) {
           >{user ? `${user.metadata.name.first.charAt(0)}${user.metadata.name.last.charAt(0)}` : ""}
           </SVGText>
           <Circle
-            onPress={() => console.log('butoto pressed')}
+            onPress={() => console.log('button pressed')}
             fill={Colors.secondary} //todo change colors based on click
             fillOpacity={1}
             cx={sqrProfImg.cPlus}
