@@ -16,6 +16,14 @@ const styles = StyleSheet.create({
     alignContent: 'stretch',
     paddingHorizontal: 31,
   },
+  line: {
+    backgroundColor: Colors.gray,
+    marginTop: 2,
+    height: 1,
+    flexDirection: 'column',
+    alignSelf: 'stretch',
+    marginHorizontal: 31,
+  }
 });
 
 

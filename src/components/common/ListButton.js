@@ -43,8 +43,9 @@ const ListButton = props => {
         <FontAwesome name={bookMarkFill} size={25} color="#C4C4C4" onPress={bookMarked}/>
       {/* </Text> */}
     </TouchableOpacity>
-    <View style={styles.line}/>
+    {/* <View style={styles.line}/>  */}
   </View>
+  
   )
 };
 
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray,
     marginTop: 2,
     height: 1,
-    flexDirection: 'column',
+    // flexDirection: 'column',
     alignSelf: 'stretch',
   }
 

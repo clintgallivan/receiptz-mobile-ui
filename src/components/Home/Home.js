@@ -35,6 +35,7 @@ function Home(props) {
   const errors = useSelector(state => errorsSelector([actionTypes.DATA], state));
   const _renderItem = ({item}) => {
     return (
+      <View>
       <View style={styles.listButtonContainer}>
         <Ellipse/>
       {/* <Text style={styles.ellipse}>Yo</Text> */}
@@ -44,6 +45,8 @@ function Home(props) {
           headerSecondary={item.metadata.date}
           linkDescription={'View'}
         />
+        </View>
+        <View style={styles.line}/>
         </View>
         
     )
