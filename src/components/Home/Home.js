@@ -42,7 +42,7 @@ function Home(props) {
           <ListButton
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
-            linkDescription={'View'}
+            // linkDescription={'View'}
           />
         </View>
         <View style={styles.line} />

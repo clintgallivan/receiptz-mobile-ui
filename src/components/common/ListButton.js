@@ -18,9 +18,10 @@ const ListButton = props => {
   
   const bookMarked = () => {
     bookMarkFill === "bookmark"
-    ? setBookMarkFill("bookmark-o")
-    : setBookMarkFill("bookmark")
+    ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
+    : setBookMarkFill("bookmark") & console.log('Saved')
   }
+  console.log(bookMarkFill)
 
 
   return (
@@ -48,19 +49,19 @@ const ListButton = props => {
   )
 };
 
-// ListButton.propTypes = {
-//   style: PropTypes.object,
-//   headerPrimary: PropTypes.string,
-//   headerSecondary: PropTypes.string,
-//   linkDescription: PropTypes.string,
-// };
+ListButton.propTypes = {
+  style: PropTypes.object,
+  headerPrimary: PropTypes.string,
+  headerSecondary: PropTypes.string,
+  linkDescription: PropTypes.string,
+};
 
-// ListButton.defaultProps = {
-//   style: null,
-//   headerPrimary: '',
-//   headerSecondary: '',
-//   linkDescription: '',
-// };
+ListButton.defaultProps = {
+  style: null,
+  headerPrimary: '',
+  headerSecondary: '',
+  linkDescription: '',
+};
 
 const styles = StyleSheet.create({
   row: {
