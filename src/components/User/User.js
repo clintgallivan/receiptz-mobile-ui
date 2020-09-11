@@ -14,7 +14,7 @@ import styles from './Styles';
 const User = () => {
   const user = useSelector(state => getUser(state));
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <View style={styles.container}>

@@ -15,8 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ListButton = props => {
   const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
-
-
+  
   const bookMarked = () => {
     bookMarkFill === "bookmark"
     ? setBookMarkFill("bookmark-o")
@@ -49,19 +48,19 @@ const ListButton = props => {
   )
 };
 
-ListButton.propTypes = {
-  style: PropTypes.object,
-  headerPrimary: PropTypes.string,
-  headerSecondary: PropTypes.string,
-  linkDescription: PropTypes.string,
-};
+// ListButton.propTypes = {
+//   style: PropTypes.object,
+//   headerPrimary: PropTypes.string,
+//   headerSecondary: PropTypes.string,
+//   linkDescription: PropTypes.string,
+// };
 
-ListButton.defaultProps = {
-  style: null,
-  headerPrimary: '',
-  headerSecondary: '',
-  linkDescription: '',
-};
+// ListButton.defaultProps = {
+//   style: null,
+//   headerPrimary: '',
+//   headerSecondary: '',
+//   linkDescription: '',
+// };
 
 const styles = StyleSheet.create({
   row: {
