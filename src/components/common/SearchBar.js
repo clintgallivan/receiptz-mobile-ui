@@ -4,7 +4,8 @@ import Feather from "react-native-vector-icons/Feather";
 
 const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
 
-  console.log(Feather);
+  
+  // console.log(Feather);
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
@@ -20,6 +21,8 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   backgroundStyle: {

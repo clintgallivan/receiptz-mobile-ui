@@ -21,7 +21,7 @@ const ListButton = props => {
     ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
     : setBookMarkFill("bookmark") & console.log('Saved')
   }
-  console.log(bookMarkFill)
+
 
 
   return (
