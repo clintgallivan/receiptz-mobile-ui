@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import getUser from 'selectors/UserSelectors';
 import getData from 'selectors/DataSelectors';
-
+console.log('yoyo')
+console.log(getData);
 export default () => {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");

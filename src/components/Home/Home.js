@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -24,6 +24,18 @@ import {FlatList, TextInput} from 'react-native-gesture-handler';
 function Home(props) {
   const user = useSelector(state => getUser(state));
   const data = useSelector(state => getData(state));
+
+  const [term, setTerm] = useState('');
+  console.log('-----');
+  // data.forEach(item => console.log(item.metadata.storeName));
+  // const dataValue = () => {}
+  // const dataValue = data
+  //   .filter(item => item.metadata.storeName == 'Blenders')
+  //   .map(({metadata}) => ({storeName: metadata.storeName}));
+  // console.log(dataValue);
+  // console.log(data);
+
+
 
   const dispatch = useDispatch();
   const isLoading = useSelector(state =>
@@ -54,6 +66,27 @@ function Home(props) {
     console.log('data', {data, isLoading, errors});
   }, []);
 
+  let finalList = []
+  if (term !== '' && data.length > 0) {
+    let searchedWords = term.toLowerCase().split(' ')
+      finalList = data.filter(receipt => {
+          let isSearched = true
+          for (let i = 0; i < searchedWords.length; i++) {
+              if (
+                  !receipt.metadata.storeName
+                      .toLowerCase()
+                      .includes(searchedWords[i])
+              ) {
+                  isSearched = false
+                  break
+              }
+          }
+          return isSearched
+      })
+  } else {
+      finalList = data
+  }
+
   return errors.length > 0 ? (
     <ErrorView errors={errors} />
   ) : isLoading ? (
@@ -62,10 +95,15 @@ function Home(props) {
     </View>
   ) : (
     <View style={styles.container}>
-      <SearchBar />
-      <FlatList data={data} renderItem={_renderItem} />
+      <SearchBar
+        term={term}
+        setTerm={setTerm}
+        // onChangeText={}`
+      />
+      <FlatList data={finalList} renderItem={_renderItem} />
     </View>
   );
+  
 }
 
 Home.navigationOptions = {

@@ -13,8 +13,8 @@ import styles from './Styles';
 
 const User = () => {
   const user = useSelector(state => getUser(state));
-
-  // console.log(user);
+console.log('HIIII')
+  console.log();
 
   return (
     <View style={styles.container}>

@@ -1,40 +1,35 @@
-import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+import React, {useState} from 'react';
+import {View, TextInput, StyleSheet} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+const SearchBar = ({ term, setTerm}) => {
 
-  
-  // console.log(Feather);
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
-      <TextInput 
+      <TextInput
         autoCapitalize="none"
         autoCorrect={false}
-        style={styles.inputStyle} 
-        placeholder="Search" 
-        // value={term}
-        // onChangeText={newTerm => onTermChange(newTerm)}
-        // onEndEditing={() => onTermSubmit()} 
+        style={styles.inputStyle}
+        placeholder="Search"
+        value={term}
+        onChangeText={newTerm => setTerm(newTerm)}
+        // onEndEditing={() => onTermSubmit()}
       />
     </View>
   );
 };
 
-
-
 const styles = StyleSheet.create({
   backgroundStyle: {
-    backgroundColor: "#E9F3FF",
+    backgroundColor: '#E9F3FF',
     height: 37,
     borderRadius: 19,
     marginHorizontal: 31,
     // marginTop: 15,
     marginBottom: 17,
     // marginBottom: 15,
-    flexDirection: "row",
-    
+    flexDirection: 'row',
   },
 
   inputStyle: {
@@ -42,13 +37,13 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     flex: 1,
     fontSize: 16,
-    color: "#233064",
+    color: '#233064',
   },
   iconStyle: {
     fontSize: 17.03,
-    alignSelf: "center",
+    alignSelf: 'center',
     marginHorizontal: 15,
-    color: "#233064",
+    color: '#233064',
   },
 });
 
