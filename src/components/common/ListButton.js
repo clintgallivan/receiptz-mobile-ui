@@ -14,14 +14,19 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 const ListButton = (props) => {
-  const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
+  // const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
   
-  const bookMarked = () => {
-    bookMarkFill === "bookmark"
-    ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
-    : setBookMarkFill("bookmark") & console.log('Saved')
-  }
+  // const bookMarked = () => {
+  //   bookMarkFill === "bookmark"
+  //   ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
+  //   : setBookMarkFill("bookmark") & console.log('Saved')
+  // }
+// const bookMarkFill = "bookmark";
+// const bookMarked = (bookMarkFill) => {
 
+//   console.log('-------')
+//   console.log(bookMarkFill)
+// }
 
 
   return (
@@ -40,7 +45,7 @@ const ListButton = (props) => {
       </View>
       {/* <Text style={styles.linkDescription}>
         {props.linkDescription} */}
-        <FontAwesome name={bookMarkFill} size={25} color="#C4C4C4" onPress={bookMarked}/>
+        <FontAwesome name={props.bookMarkFill} size={25} color="#C4C4C4" onPress={props.bookMarked}/>
       {/* </Text> */}
     </TouchableOpacity>
     {/* <View style={styles.line}/>  */}

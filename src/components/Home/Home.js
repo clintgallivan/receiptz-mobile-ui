@@ -11,6 +11,7 @@ import strings from 'localization';
 import ErrorView from '../common/ErrorView';
 import SearchBar from '../common/SearchBar';
 import Ellipse from '../common/Ellipse';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import getUser from 'selectors/UserSelectors';
 import getData from 'selectors/DataSelectors';
@@ -35,7 +36,7 @@ function Home(props) {
   //*  .map(({metadata}) => ({ storeName: metadata.storeName}));
   //* console.log(dataValue);
   // console.log(data);
-
+  
   const dispatch = useDispatch();
   const isLoading = useSelector(state =>
     isLoadingSelector([actionTypes.DATA], state),
@@ -43,7 +44,32 @@ function Home(props) {
   const errors = useSelector(state =>
     errorsSelector([actionTypes.DATA], state),
   );
+
+  // const bookMarkFill = 'bookmark';
+  // const bookMarked = () => {
+  //   console.log('bookmarked')
+  // }
+
+
+  const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
+  // console.log(bookMarkFill)
+  const bookMarked = () => {
+    bookMarkFill === "bookmark"
+    ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
+    : setBookMarkFill("bookmark") & console.log('Saved')
+  }
   const _renderItem = ({item}) => {
+  
+
+    // const bookMarkFill = 'bookmark';
+    // const bookMarked = () => {
+    //   console.log('bookmarked')
+    // }
+    // const bookMarked = () => {
+    //   bookMarkFill === "bookmark"
+    //   ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
+    //   : setBookMarkFill("bookmark") & console.log('Saved')
+    // }
     return (
       <View>
         <View style={styles.listButtonContainer}>
@@ -53,6 +79,8 @@ function Home(props) {
           <ListButton
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
+            bookMarked={bookMarked}
+            bookMarkFill={bookMarkFill}
             // linkDescription={'View'}
           />
         </View>
@@ -65,25 +93,23 @@ function Home(props) {
     console.log('data', {data, isLoading, errors});
   }, []);
 
-  let finalList = []
-  if (term !== '' && data.length > 0) { 
-    let searchedWords = term.toLowerCase().split(' ')
-      finalList = data.filter(receipt => {
-          let isSearched = true
-          for (let i = 0; i < searchedWords.length; i++) {
-              if (
-                  !receipt.metadata.storeName
-                      .toLowerCase()
-                      .includes(searchedWords[i])
-              ) {
-                  isSearched = false
-                  break
-              }
-          }
-          return isSearched
-      })
+  let finalList = [];
+  if (term !== '' && data.length > 0) {
+    let searchedWords = term.toLowerCase().split(' ');
+    finalList = data.filter(receipt => {
+      let isSearched = true;
+      for (let i = 0; i < searchedWords.length; i++) {
+        if (
+          !receipt.metadata.storeName.toLowerCase().includes(searchedWords[i])
+        ) {
+          isSearched = false;
+          break;
+        }
+      }
+      return isSearched;
+    });
   } else {
-      finalList = data
+    finalList = data;
   }
 
   return errors.length > 0 ? (
