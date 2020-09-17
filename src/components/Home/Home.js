@@ -20,22 +20,21 @@ import errorsSelector from 'selectors/ErrorSelectors';
 import {isLoadingSelector} from 'selectors/StatusSelectors';
 import {getUserReceipts, actionTypes} from 'actions/DataActions';
 import {FlatList, TextInput} from 'react-native-gesture-handler';
+import ReceiptsController from 'controllers/ReceiptsController';
 
 function Home(props) {
   const user = useSelector(state => getUser(state));
   const data = useSelector(state => getData(state));
 
   const [term, setTerm] = useState('');
-  console.log('-----');
+  // console.log('-----');
   // data.forEach(item => console.log(item.metadata.storeName));
   // const dataValue = () => {}
-  // const dataValue = data
-  //   .filter(item => item.metadata.storeName == 'Blenders')
-  //   .map(({metadata}) => ({storeName: metadata.storeName}));
-  // console.log(dataValue);
+  //* const dataValue = data
+  //*  .filter(item => item.metadata.storeName == 'Blenders')
+  //*  .map(({metadata}) => ({ storeName: metadata.storeName}));
+  //* console.log(dataValue);
   // console.log(data);
-
-
 
   const dispatch = useDispatch();
   const isLoading = useSelector(state =>
@@ -67,7 +66,7 @@ function Home(props) {
   }, []);
 
   let finalList = []
-  if (term !== '' && data.length > 0) {
+  if (term !== '' && data.length > 0) { 
     let searchedWords = term.toLowerCase().split(' ')
       finalList = data.filter(receipt => {
           let isSearched = true
@@ -103,7 +102,6 @@ function Home(props) {
       <FlatList data={finalList} renderItem={_renderItem} />
     </View>
   );
-  
 }
 
 Home.navigationOptions = {

@@ -431,7 +431,7 @@
             "tax": 5,
             "total": 20,
             "paymentMethod": "creditCard",
-            "cards_id": "cards_id"
+            "cards_id": "cards_id",
         },
         "lineItems": [
             {"item": "mango smoothie", "costPerItem": 5, "savings": 0, "quantitiy": 3}

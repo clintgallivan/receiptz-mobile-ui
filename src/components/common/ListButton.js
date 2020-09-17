@@ -13,7 +13,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 
-const ListButton = props => {
+const ListButton = (props) => {
   const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
   
   const bookMarked = () => {

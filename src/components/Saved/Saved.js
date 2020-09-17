@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
@@ -19,12 +19,11 @@ import {getUserReceipts} from 'actions/DataActions';
 const Saved = props => {
   const user = useSelector(state => getUser(state));
   const data = useSelector(state => getData(state));
-  console.log('hiiiii');
-  console.log(data);
+
+  const [term, setTerm] = useState('');
 
   const _renderItem = ({item}) => {
-    console.log('hiiiii')
-    console.log(item);
+
     
     return (
       <View>
@@ -40,10 +39,35 @@ const Saved = props => {
     );
   };
 
+
+  let finalList = []
+  if (term !== '' && data.length > 0) {
+    let searchedWords = term.toLowerCase().split(' ')
+      finalList = data.filter(receipt => {
+          let isSearched = true
+          for (let i = 0; i < searchedWords.length; i++) {
+              if (
+                  !receipt.metadata.storeName
+                      .toLowerCase()
+                      .includes(searchedWords[i]) 
+              ) {
+                  isSearched = false
+                  break
+              }
+          }
+          return isSearched
+      })
+  } else {
+      finalList = data
+  }
+
   return (
     <View style={styles.container}>
-      <SearchBar />
-      <FlatList data={data} renderItem={_renderItem} />
+      <SearchBar 
+        term={term}
+        setTerm={setTerm}
+      />
+      <FlatList data={finalList} renderItem={_renderItem} />
     </View>
   );
 };

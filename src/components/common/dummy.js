@@ -1,5 +1,7 @@
 /** @format */
 
+
+//* general keyword/letter search function
 let finalList = []
 if (term !== '' && data.length > 0) {
   let searchedWords = term.toLowerCase().split(' ')
@@ -19,4 +21,18 @@ if (term !== '' && data.length > 0) {
     })
 } else {
     finalList = data
+}
+
+
+
+//* exact word search function 
+let finalList = [];
+if (term !== '') {
+  finalList = data.filter(receipt => 
+    receipt.metadata.storeName
+      .toLowerCase()
+      .includes(term)
+  )
+} else {
+  finalList = data
 }
