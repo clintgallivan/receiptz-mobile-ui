@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import error from './ErrorReducer';
 import user from './UserReducer';
 import status from './StatusReducer';
-import data from './DataReducer'
+import data from './DataReducer';
 
 const rootReducer = combineReducers({
   error,

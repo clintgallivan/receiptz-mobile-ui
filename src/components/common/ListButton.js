@@ -1,57 +1,41 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {useDispatch} from 'react-redux';
 import TextStyles from 'helpers/TextStyles';
 import Colors from 'helpers/Colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import {clickedReceipt} from '../../actions/DataActions';
 
-
-
-const ListButton = (props) => {
-  // const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
-  
-  // const bookMarked = () => {
-  //   bookMarkFill === "bookmark"
-  //   ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
-  //   : setBookMarkFill("bookmark") & console.log('Saved')
-  // }
-// const bookMarkFill = "bookmark";
-// const bookMarked = (bookMarkFill) => {
-
-//   console.log('-------')
-//   console.log(bookMarkFill)
-// }
-
+const ListButton = props => {
+  const dispatch = useDispatch();
 
   return (
-  <View style={styles.row}>
-    <TouchableOpacity
-      {...props}
-      style={[styles.buttonList, props.style]}
-    >
-      <View style={styles.dataView}>
-        <Text style={styles.headerPrimary}>
-          {props.headerPrimary}
-        </Text>
-        <Text style={styles.headerSecondary}>
-          {props.headerSecondary}
-        </Text>
-      </View>
-      {/* <Text style={styles.linkDescription}>
+    <View style={styles.row}>
+      <TouchableOpacity
+        {...props}
+        style={[styles.buttonList, props.style]}
+        onPress={() => {
+          dispatch(clickedReceipt(props.item));
+        }}>
+        <View style={styles.dataView}>
+          <Text style={styles.headerPrimary}>{props.headerPrimary}</Text>
+          <Text style={styles.headerSecondary}>{props.headerSecondary}</Text>
+        </View>
+        {/* <Text style={styles.linkDescription}>
         {props.linkDescription} */}
-        <FontAwesome name={props.bookMarkFill} size={25} color="#C4C4C4" onPress={props.bookMarked}/>
-      {/* </Text> */}
-    </TouchableOpacity>
-    {/* <View style={styles.line}/>  */}
-  </View>
-  
-  )
+        <FontAwesome
+          name={props.bookMarkFill}
+          size={25}
+          color="#C4C4C4"
+          onPress={props.bookMarked}
+        />
+        {/* </Text> */}
+      </TouchableOpacity>
+      {/* <View style={styles.line}/>  */}
+    </View>
+  );
 };
 
 ListButton.propTypes = {
@@ -82,7 +66,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   dataView: {
     alignSelf: 'stretch',
@@ -90,27 +74,25 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   headerPrimary: {
-    color: "#233064",
+    color: '#233064',
     // opacity: 1,
     fontSize: 17,
-    textAlign: "left",
-    fontFamily: "AvenirNext-Bold"
-    
+    textAlign: 'left',
+    fontFamily: 'AvenirNext-Bold',
   },
   headerSecondary: {
-    color: "#C4C4C4",
+    color: '#C4C4C4',
     opacity: 1,
     fontSize: 11,
-    textAlign: "left",
+    textAlign: 'left',
     marginTop: 7,
-    fontFamily: "AvenirNext-Regular"
-
+    fontFamily: 'AvenirNext-Regular',
   },
   linkDescription: {
     color: Colors.primary,
     opacity: 1,
     fontSize: 12,
-    textAlignVertical: "bottom",
+    textAlignVertical: 'bottom',
   },
   line: {
     backgroundColor: Colors.gray,
@@ -118,8 +100,7 @@ const styles = StyleSheet.create({
     height: 1,
     // flexDirection: 'column',
     alignSelf: 'stretch',
-  }
-
+  },
 });
 
 export default ListButton;

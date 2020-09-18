@@ -25,18 +25,33 @@ import ReceiptsController from 'controllers/ReceiptsController';
 
 function Home(props) {
   const user = useSelector(state => getUser(state));
-  const data = useSelector(state => getData(state));
+  const data = useSelector(state => state.data.data);
+  const clickedReceipt = useSelector(state => state.data.clickedReceipt);
 
   const [term, setTerm] = useState('');
+
+  const [bookMarkFill, setBookMarkFill] = useState('bookmark-o');
+  // console.log(bookMarkFill)
+  const bookMarked = () => {
+    bookMarkFill === 'bookmark'
+      ? setBookMarkFill('bookmark-o') & console.log('UnSaved')
+      : setBookMarkFill('bookmark') & console.log('Saved');
+  };
+
+  // data.filter(item => item.metadata)
   // console.log('-----');
   // data.forEach(item => console.log(item.metadata.storeName));
   // const dataValue = () => {}
-  //* const dataValue = data
-  //*  .filter(item => item.metadata.storeName == 'Blenders')
+  //*  const dataValue = data
+  //*   .filter(item => item.metadata.bookMarked == 'no')
   //*  .map(({metadata}) => ({ storeName: metadata.storeName}));
-  //* console.log(dataValue);
-  // console.log(data);
-  
+  //*   console.log('-------')
+  //*  console.log(dataValue);
+  const dataValue = data.filter(item => item.metadata.bookMarked == 'no');
+  // .map(({metadata}) => ({metadata}));
+  console.log('-------');
+  console.log(dataValue);
+
   const dispatch = useDispatch();
   const isLoading = useSelector(state =>
     isLoadingSelector([actionTypes.DATA], state),
@@ -45,31 +60,7 @@ function Home(props) {
     errorsSelector([actionTypes.DATA], state),
   );
 
-  // const bookMarkFill = 'bookmark';
-  // const bookMarked = () => {
-  //   console.log('bookmarked')
-  // }
-
-
-  const [bookMarkFill, setBookMarkFill] = useState("bookmark-o")
-  // console.log(bookMarkFill)
-  const bookMarked = () => {
-    bookMarkFill === "bookmark"
-    ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
-    : setBookMarkFill("bookmark") & console.log('Saved')
-  }
   const _renderItem = ({item}) => {
-  
-
-    // const bookMarkFill = 'bookmark';
-    // const bookMarked = () => {
-    //   console.log('bookmarked')
-    // }
-    // const bookMarked = () => {
-    //   bookMarkFill === "bookmark"
-    //   ? setBookMarkFill("bookmark-o") & console.log('UnSaved')
-    //   : setBookMarkFill("bookmark") & console.log('Saved')
-    // }
     return (
       <View>
         <View style={styles.listButtonContainer}>
@@ -81,6 +72,7 @@ function Home(props) {
             headerSecondary={item.metadata.date}
             bookMarked={bookMarked}
             bookMarkFill={bookMarkFill}
+            item={item}
             // linkDescription={'View'}
           />
         </View>
@@ -92,6 +84,10 @@ function Home(props) {
     dispatch(getUserReceipts(user._id));
     console.log('data', {data, isLoading, errors});
   }, []);
+
+  useEffect(() => {
+    console.log(clickedReceipt);
+  }, [clickedReceipt]);
 
   let finalList = [];
   if (term !== '' && data.length > 0) {

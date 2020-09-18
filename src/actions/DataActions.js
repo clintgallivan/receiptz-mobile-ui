@@ -5,6 +5,7 @@ export const actionTypes = {
   DATA_REQUEST: 'DATA_REQUEST',
   DATA_ERROR: 'DATA_ERROR',
   DATA_SUCCESS: 'DATA_SUCCESS',
+  CLICKED_RECEIPT: 'CLICKED_RECEIPT',
 };
 
 
@@ -21,6 +22,11 @@ const requestSuccess = data => ({
   type: actionTypes.DATA_SUCCESS,
   data,
 });
+
+export const clickedReceipt = item => { return {
+  type: actionTypes.CLICKED_RECEIPT,
+  item,
+}};
 
 
 export const getUserReceipts = (user_id) => async (dispatch) => {

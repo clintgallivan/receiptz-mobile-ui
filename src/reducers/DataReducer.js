@@ -2,7 +2,9 @@ import { actionTypes } from 'actions/DataActions';
 
 const initialState = {
   data: null,
+  clickedReceipt: null,
 };
+
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,6 +16,11 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.data,
+      };
+    case actionTypes.CLICKED_RECEIPT:
+      return {
+        ...state,
+        clickedReceipt: action.item
       };
     default:
       return state;

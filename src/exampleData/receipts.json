@@ -217,69 +217,74 @@
   },
   {
     "metadata": {
-        "merchant_id": "merchants_id",
-        "merchantType": "food",
-        "storeName": "Cafe Nuvo",
-        "date": "08, May 2019",
-        "subTotal": 26.35,
-        "tax": 3.65,
-        "total": 30,
-        "paymentMethod": "creditCard",
-        "cards_id": "casrds_id",
-        "bookMarked": "no"
+      "merchant_id": "merchants_id",
+      "merchantType": "food",
+      "storeName": "Cafe Nuvo",
+      "date": "08, May 2019",
+      "subTotal": 26.35,
+      "tax": 3.65,
+      "total": 30,
+      "paymentMethod": "creditCard",
+      "cards_id": "casrds_id",
+      "bookMarked": "no"
     },
     "lineItems": [
-        {"item": "coffee", "costPerItem": 10, "savings": 3, "quantitiy": 1},
-        {"item": "turky sandwitch", "costPerItem": 10, "savings": 3, "quantitiy": 1},
-        {"item": "chips", "costPerItem": 26.35, "savings": 3, "quantitiy": 1}
+      {"item": "coffee", "costPerItem": 10, "savings": 3, "quantitiy": 1},
+      {
+        "item": "turky sandwitch",
+        "costPerItem": 10,
+        "savings": 3,
+        "quantitiy": 1
+      },
+      {"item": "chips", "costPerItem": 26.35, "savings": 3, "quantitiy": 1}
     ]
-},
-{
+  },
+  {
     "metadata": {
-        "merchant": "merchants_id",
-        "storeName": "Blenders",
-        "date": "09, May 2019",
-        "subTotal": 15,
-        "tax": 5,
-        "total": 20,
-        "paymentMethod": "creditCard",
-        "cards_id": "cards_id",
-        "bookMarked": "no"
+      "merchant": "merchants_id",
+      "storeName": "Blenders",
+      "date": "09, May 2019",
+      "subTotal": 15,
+      "tax": 5,
+      "total": 20,
+      "paymentMethod": "creditCard",
+      "cards_id": "cards_id",
+      "bookMarked": "no"
     },
     "lineItems": [
-        {"item": "mango smoothie", "costPerItem": 5, "savings": 0, "quantitiy": 3}
+      {"item": "mango smoothie", "costPerItem": 5, "savings": 0, "quantitiy": 3}
     ]
-},
-{
+  },
+  {
     "metadata": {
-        "merchant": "merchants_id",
-        "storeName": "Cheveron",
-        "date": "10, May 2019",
-        "subTotal": 50,
-        "tax": 5,
-        "total": 55,
-        "paymentMethod": "creditCard",
-        "cards_id": "cards_id",
-        "bookMarked": "no"
+      "merchant": "merchants_id",
+      "storeName": "Cheveron",
+      "date": "10, May 2019",
+      "subTotal": 50,
+      "tax": 5,
+      "total": 55,
+      "paymentMethod": "creditCard",
+      "cards_id": "cards_id",
+      "bookMarked": "no"
     },
     "lineItems": [
-        {"item": "Gas", "costPerItem": 5, "savings": 0, "quantitiy": 3}
+      {"item": "Gas", "costPerItem": 5, "savings": 0, "quantitiy": 3}
     ]
-},
-{
+  },
+  {
     "metadata": {
-        "merchant": "merchants_id",
-        "storeName": "Cafe Nuvo",
-        "date": "11, May 2019",
-        "subTotal": 15,
-        "tax": 5,
-        "total": 20,
-        "paymentMethod": "creditCard",
-        "cards_id": "cards_id",
-        "bookMarked": "no"
+      "merchant": "merchants_id",
+      "storeName": "Cafe Nuvo",
+      "date": "11, May 2019",
+      "subTotal": 15,
+      "tax": 5,
+      "total": 20,
+      "paymentMethod": "creditCard",
+      "cards_id": "cards_id",
+      "bookMarked": "no"
     },
     "lineItems": [
-        {"item": "mango smoothie", "costPerItem": 5, "savings": 0, "quantitiy": 3}
+      {"item": "mango smoothie", "costPerItem": 5, "savings": 0, "quantitiy": 3}
     ]
-},
+  }
 ]
