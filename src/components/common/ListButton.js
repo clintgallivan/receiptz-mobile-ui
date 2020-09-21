@@ -7,6 +7,7 @@ import Colors from 'helpers/Colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {clickedReceipt} from '../../actions/DataActions';
+import {clickedBookmark} from '../../actions/DataActions';
 
 const ListButton = props => {
   const dispatch = useDispatch();
@@ -29,7 +30,9 @@ const ListButton = props => {
           name={props.bookMarkFill}
           size={25}
           color="#C4C4C4"
-          onPress={props.bookMarked}
+          onPress={() => {
+            dispatch(clickedBookmark(props.item));
+          }}
         />
         {/* </Text> */}
       </TouchableOpacity>

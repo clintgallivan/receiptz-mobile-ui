@@ -6,8 +6,8 @@ export const actionTypes = {
   DATA_ERROR: 'DATA_ERROR',
   DATA_SUCCESS: 'DATA_SUCCESS',
   CLICKED_RECEIPT: 'CLICKED_RECEIPT',
+  CLICKED_BOOKMARK: 'CLICKED_BOOKMARK',
 };
-
 
 const dataRequest = () => ({
   type: actionTypes.DATA_REQUEST,
@@ -23,13 +23,21 @@ const requestSuccess = data => ({
   data,
 });
 
-export const clickedReceipt = item => { return {
-  type: actionTypes.CLICKED_RECEIPT,
-  item,
-}};
+export const clickedReceipt = item => {
+  return {
+    type: actionTypes.CLICKED_RECEIPT,
+    item,
+  };
+};
 
+export const clickedBookmark = item => {
+  return {
+    type: actionTypes.CLICKED_BOOKMARK,
+    item,
+  };
+};
 
-export const getUserReceipts = (user_id) => async (dispatch) => {
+export const getUserReceipts = user_id => async dispatch => {
   dispatch(dataRequest());
   try {
     const data = await ReceiptsController.getUserRecepts(user_id);

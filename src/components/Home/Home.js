@@ -27,6 +27,7 @@ function Home(props) {
   const user = useSelector(state => getUser(state));
   const data = useSelector(state => state.data.data);
   const clickedReceipt = useSelector(state => state.data.clickedReceipt);
+  const clickedBookmark = useSelector(state => state.data.clickedBookmark);
 
   const [term, setTerm] = useState('');
 
@@ -50,7 +51,7 @@ function Home(props) {
   const dataValue = data.filter(item => item.metadata.bookMarked == 'no');
   // .map(({metadata}) => ({metadata}));
   console.log('-------');
-  console.log(dataValue);
+  // console.log(dataValue);
 
   const dispatch = useDispatch();
   const isLoading = useSelector(state =>
@@ -86,8 +87,14 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
+    console.log('clickeReceipt');
     console.log(clickedReceipt);
   }, [clickedReceipt]);
+
+  useEffect(() => {
+    console.log('clickedBookmark');
+    console.log(clickedBookmark);
+  }, [clickedBookmark]);
 
   let finalList = [];
   if (term !== '' && data.length > 0) {
