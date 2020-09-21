@@ -10,7 +10,7 @@
       "total": 30,
       "paymentMethod": "creditCard",
       "cards_id": "casrds_id",
-      "bookMarked": "no"
+      "bookMarked": "yes"
     },
     "lineItems": [
       {"item": "coffee", "costPerItem": 10, "savings": 3, "quantitiy": 1},

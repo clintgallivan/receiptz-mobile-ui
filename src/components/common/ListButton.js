@@ -27,7 +27,7 @@ const ListButton = props => {
         {/* <Text style={styles.linkDescription}>
         {props.linkDescription} */}
         <FontAwesome
-          name={props.bookMarkFill}
+          name={props.bookMarkIcon}
           size={25}
           color="#C4C4C4"
           onPress={() => {

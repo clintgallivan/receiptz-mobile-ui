@@ -29,6 +29,14 @@ function Home(props) {
   const clickedReceipt = useSelector(state => state.data.clickedReceipt);
   const clickedBookmark = useSelector(state => state.data.clickedBookmark);
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state =>
+    isLoadingSelector([actionTypes.DATA], state),
+  );
+  const errors = useSelector(state =>
+    errorsSelector([actionTypes.DATA], state),
+  );
+
   const [term, setTerm] = useState('');
 
   const [bookMarkFill, setBookMarkFill] = useState('bookmark-o');
@@ -48,18 +56,16 @@ function Home(props) {
   //*  .map(({metadata}) => ({ storeName: metadata.storeName}));
   //*   console.log('-------')
   //*  console.log(dataValue);
-  const dataValue = data.filter(item => item.metadata.bookMarked == 'no');
-  // .map(({metadata}) => ({metadata}));
-  console.log('-------');
+  // const dataValue = data
+  //   .filter(item => item.metadata.bookMarked == 'no')
+  //   .map(({metadata}) => ({metadata}));
+  // console.log('-------');
+  // data.forEach(item => console.log(item.metadata.bookMarked));
   // console.log(dataValue);
 
-  const dispatch = useDispatch();
-  const isLoading = useSelector(state =>
-    isLoadingSelector([actionTypes.DATA], state),
-  );
-  const errors = useSelector(state =>
-    errorsSelector([actionTypes.DATA], state),
-  );
+  // bookMarkIcon = () => {
+  //   data.forEach(item => console.log(item.metadata.storeName));
+  // };
 
   const _renderItem = ({item}) => {
     return (
@@ -71,8 +77,11 @@ function Home(props) {
           <ListButton
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
-            bookMarked={bookMarked}
-            bookMarkFill={bookMarkFill}
+            bookMarkIcon={
+              item.metadata.bookMarked === 'no' ? 'bookmark-o' : 'bookmark'
+            }
+            // bookMarked={bookMarked}
+            // bookMarkFill={bookMarkFill}
             item={item}
             // linkDescription={'View'}
           />
