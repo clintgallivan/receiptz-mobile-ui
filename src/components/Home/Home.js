@@ -39,13 +39,13 @@ function Home(props) {
 
   const [term, setTerm] = useState('');
 
-  const [bookMarkFill, setBookMarkFill] = useState('bookmark-o');
-  // console.log(bookMarkFill)
-  const bookMarked = () => {
-    bookMarkFill === 'bookmark'
-      ? setBookMarkFill('bookmark-o') & console.log('UnSaved')
-      : setBookMarkFill('bookmark') & console.log('Saved');
-  };
+  // const [bookMarkFill, setBookMarkFill] = useState('bookmark-o');
+  // // console.log(bookMarkFill)
+  // const bookMarked = () => {
+  //   bookMarkFill === 'bookmark'
+  //     ? setBookMarkFill('bookmark-o') & console.log('UnSaved')
+  //     : setBookMarkFill('bookmark') & console.log('Saved');
+  // };
 
   // data.filter(item => item.metadata)
   // console.log('-----');
@@ -83,8 +83,6 @@ function Home(props) {
             bookMarkIcon={
               item.metadata.bookMarked === 'no' ? 'bookmark-o' : 'bookmark'
             }
-            // bookMarked={bookMarked}
-            // bookMarkFill={bookMarkFill}
             item={item}
             // linkDescription={'View'}
           />
@@ -95,7 +93,6 @@ function Home(props) {
   };
   useEffect(() => {
     dispatch(getUserReceipts(user._id));
-    console.log('+++++++');
     console.log('data', {data, isLoading, errors});
   }, []);
 
@@ -139,11 +136,7 @@ function Home(props) {
     </View>
   ) : (
     <View style={styles.container}>
-      <SearchBar
-        term={term}
-        setTerm={setTerm}
-        // onChangeText={}`
-      />
+      <SearchBar term={term} setTerm={setTerm} />
       <FlatList data={finalList} renderItem={_renderItem} />
     </View>
   );

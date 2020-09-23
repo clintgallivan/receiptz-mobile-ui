@@ -14,17 +14,28 @@ import getUser from 'selectors/UserSelectors';
 import getData from 'selectors/DataSelectors';
 import HeaderStyles from 'helpers/HeaderStyles';
 import Colors from 'helpers/Colors';
-import {getUserReceipts} from 'actions/DataActions';
+import errorsSelector from 'selectors/ErrorSelectors';
+import {isLoadingSelector} from 'selectors/StatusSelectors';
+import {
+  getUserReceipts,
+  actionTypes,
+  clickedReceipt,
+} from 'actions/DataActions';
 
 const Saved = props => {
   const user = useSelector(state => getUser(state));
   const data = useSelector(state => getData(state));
 
+  const isLoading = useSelector(state =>
+    isLoadingSelector([actionTypes.DATA], state),
+  );
+  const errors = useSelector(state =>
+    errorsSelector([actionTypes.DATA], state),
+  );
+
   const [term, setTerm] = useState('');
 
   const _renderItem = ({item}) => {
-
-    
     return (
       <View>
         <View style={styles.listButtonContainer}>
@@ -32,6 +43,10 @@ const Saved = props => {
           <ListButton
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
+            bookMarkIcon={
+              item.metadata.bookMarked === 'no' ? 'bookmark-o' : 'bookmark'
+            }
+            item={item}
           />
         </View>
         <View style={styles.line} />
@@ -39,34 +54,45 @@ const Saved = props => {
     );
   };
 
+  useEffect(() => {
+    console.log(clickedReceipt);
+  }, [clickedReceipt]);
 
-  let finalList = []
-  if (term !== '' && data.length > 0) {
-    let searchedWords = term.toLowerCase().split(' ')
-      finalList = data.filter(receipt => {
-          let isSearched = true
-          for (let i = 0; i < searchedWords.length; i++) {
-              if (
-                  !receipt.metadata.storeName
-                      .toLowerCase()
-                      .includes(searchedWords[i]) 
-              ) {
-                  isSearched = false
-                  break
-              }
-          }
-          return isSearched
-      })
+  let bookMarkedList = [];
+  bookMarkedList = data.filter(receipt => receipt.metadata.bookMarked == 'yes');
+
+  let finalList = [];
+  if (term !== '' && bookMarkedList.length > 0) {
+    let searchedWords = term.toLowerCase().split(' ');
+    finalList = bookMarkedList.filter(receipt => {
+      let isSearched = true;
+      for (let i = 0; i < searchedWords.length; i++) {
+        if (
+          !receipt.metadata.storeName.toLowerCase().includes(searchedWords[i])
+        ) {
+          isSearched = false;
+          break;
+        }
+      }
+      return isSearched;
+    });
   } else {
-      finalList = data
+    finalList = bookMarkedList;
   }
 
-  return (
+  if (!finalList) return null;
+  finalList = finalList.filter(item => {
+    return item != null;
+  });
+  return errors.length > 0 ? (
+    <ErrorView errors={errors} />
+  ) : isLoading ? (
+    <View>
+      <Text>Loading...</Text>
+    </View>
+  ) : (
     <View style={styles.container}>
-      <SearchBar 
-        term={term}
-        setTerm={setTerm}
-      />
+      <SearchBar term={term} setTerm={setTerm} />
       <FlatList data={finalList} renderItem={_renderItem} />
     </View>
   );
