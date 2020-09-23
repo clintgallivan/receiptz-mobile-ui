@@ -1,8 +1,10 @@
 import {actionTypes} from 'actions/DataActions';
+import {ActionSheetIOS} from 'react-native';
 
 const initialState = {
   data: null,
   clickedReceipt: null,
+  clickedBookmark: null,
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -12,6 +14,8 @@ const dataReducer = (state = initialState, action) => {
         ...state,
       };
     case actionTypes.DATA_SUCCESS:
+      console.log('=====');
+
       return {
         ...state,
         data: action.data,
@@ -22,9 +26,18 @@ const dataReducer = (state = initialState, action) => {
         clickedReceipt: action.item,
       };
     case actionTypes.CLICKED_BOOKMARK:
+      // console.log('====');
+      // console.log(state);
       return {
         ...state,
         clickedBookmark: action.item,
+        data: state.data.map(receipt => {
+          if (action.item.metadata.id === receipt.metadata.id) {
+            receipt.metadata.bookMarked =
+              receipt.metadata.bookMarked === 'no' ? 'yes' : 'no';
+          }
+          return receipt;
+        }),
       };
     default:
       return state;

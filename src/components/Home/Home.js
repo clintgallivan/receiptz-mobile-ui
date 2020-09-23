@@ -68,6 +68,9 @@ function Home(props) {
   // };
 
   const _renderItem = ({item}) => {
+    if (!item) {
+      return null;
+    }
     return (
       <View>
         <View style={styles.listButtonContainer}>
@@ -92,6 +95,7 @@ function Home(props) {
   };
   useEffect(() => {
     dispatch(getUserReceipts(user._id));
+    console.log('+++++++');
     console.log('data', {data, isLoading, errors});
   }, []);
 
@@ -123,7 +127,10 @@ function Home(props) {
   } else {
     finalList = data;
   }
-
+  if (!finalList) return null;
+  finalList = finalList.filter(item => {
+    return item != null;
+  });
   return errors.length > 0 ? (
     <ErrorView errors={errors} />
   ) : isLoading ? (

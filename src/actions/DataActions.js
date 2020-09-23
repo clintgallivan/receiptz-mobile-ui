@@ -38,6 +38,7 @@ export const clickedBookmark = item => {
 };
 
 export const getUserReceipts = user_id => async dispatch => {
+  console.log('Something');
   dispatch(dataRequest());
   try {
     const data = await ReceiptsController.getUserRecepts(user_id);
