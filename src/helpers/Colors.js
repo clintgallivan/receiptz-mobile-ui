@@ -7,5 +7,7 @@ export default {
   secondary: 'rgba(69,151,154,1)',
   darkGray: 'rgba(109,114,120,1)',
   inactive: '#41969F',
-  topTabText: '#233064',
+  primaryText: '#233064',
+  inputBackground: '#E9F3FF',
+  inputTextColor: '#606060',
 };

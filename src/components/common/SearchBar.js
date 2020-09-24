@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-const SearchBar = ({ term, setTerm}) => {
-
+const SearchBar = ({term, setTerm}) => {
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />

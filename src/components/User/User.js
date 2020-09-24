@@ -45,7 +45,7 @@ const User = () => {
 User.navigationOptions = {
   title: strings.profile,
   headerTitleStyle: {
-    color: Colors.topTabText,
+    color: Colors.primaryText,
     fontFamily: 'AvenirNext-Bold',
   },
   headerStyle: HeaderStyles.appHeader,

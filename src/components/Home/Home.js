@@ -145,7 +145,7 @@ function Home(props) {
 Home.navigationOptions = {
   title: strings.home,
   headerTitleStyle: {
-    color: Colors.topTabText,
+    color: Colors.primaryText,
     fontFamily: 'AvenirNext-Bold',
   },
   headerStyle: HeaderStyles.appHeader,

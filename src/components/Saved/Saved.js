@@ -101,7 +101,7 @@ const Saved = props => {
 Saved.navigationOptions = {
   title: strings.saved,
   headerTitleStyle: {
-    color: Colors.topTabText,
+    color: Colors.primaryText,
     fontFamily: 'AvenirNext-Bold',
   },
   headerStyle: HeaderStyles.appHeader,

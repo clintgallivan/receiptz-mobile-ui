@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
     marginVertical: 40,
     padding: 40,
     justifyContent: 'space-evenly',
-  //  backgroundColor: Colors.gray,
+    //  backgroundColor: Colors.gray,
   },
   login: {
     alignSelf: 'stretch',
     marginTop: 70,
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
   signup: {
     alignSelf: 'stretch',
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     opacity: 1,
     fontSize: 12,
-    textAlignVertical: "bottom",
-    textDecorationLine: 'underline'
+    textAlignVertical: 'bottom',
+    textDecorationLine: 'underline',
   },
 });
 

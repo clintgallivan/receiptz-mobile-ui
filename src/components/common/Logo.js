@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import TextStyles from 'helpers/TextStyles';
 import Colors from 'helpers/Colors';
 
@@ -16,11 +12,12 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   logo: {
-    backgroundColor: "transparent",
-    color: Colors.white,
+    backgroundColor: 'transparent',
+    color: Colors.primaryText,
     opacity: 1,
-    fontSize: 46,
-    textAlign: "center"
+    fontSize: 50,
+    textAlign: 'center',
+    fontFamily: 'AvenirNext-Bold',
   },
 });
 
@@ -29,8 +26,10 @@ const TextField = props => (
     <Text
       {...props}
       style={[styles.logo, props.style]}
-      underlineColorAndroid="transparent"
-    > RECEIPTZ </Text>
+      underlineColorAndroid="transparent">
+      {' '}
+      Receiptz{' '}
+    </Text>
   </View>
 );
 
