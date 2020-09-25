@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { Provider } from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import {View, ActivityIndicator, StyleSheet} from 'react-native';
+import {Provider} from 'react-redux';
 import Navigation from './components/navigation';
 import Colors from './helpers/Colors';
-import { store, persist } from './reducers';
+import {store, persist} from './reducers';
 
 const styles = StyleSheet.create({
   container: {

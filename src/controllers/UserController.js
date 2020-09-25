@@ -1,5 +1,5 @@
 // import httpClient from './HttpClient';
-import exUser from '../exampleData/exUser.json'
+import exUser from '../exampleData/exUser.json';
 
 class UserController {
   constructor() {
@@ -7,8 +7,8 @@ class UserController {
   }
 
   login = async (email, password) =>
-  // Real implementation of a login request using the HttpClient
-  /* try {
+    // Real implementation of a login request using the HttpClient
+    /* try {
     const result = await httpClient.post({
       url: `${this.basePath}/session`,
       method: 'POST',
@@ -26,22 +26,15 @@ class UserController {
     // This is a mocked example to simulate api behavior
     new Promise((resolve, reject) => {
       if (email !== 'a@a.com' && password !== '') {
-        setTimeout(
-          () => resolve(exUser),
-          1000,
-        );
+        setTimeout(() => resolve(exUser), 1000);
       } else {
-        setTimeout(
-          () => reject(new Error('Invalid Email/Password')),
-          1000,
-        );
+        setTimeout(() => reject(new Error('Invalid Email/Password')), 1000);
       }
     });
 
-
   signup = async (email, password) =>
-  // Real implementation of a login request using the HttpClient
-  /* try {
+    // Real implementation of a login request using the HttpClient
+    /* try {
     const result = await httpClient.post({
       url: `${this.basePath}/session`,
       method: 'POST',
@@ -59,15 +52,9 @@ class UserController {
     // This is a mocked example to simulate api behavior
     new Promise((resolve, reject) => {
       if (email !== 'a@a.com' && password !== '') {
-        setTimeout(
-          () => resolve(exUser),
-          1000,
-        );
+        setTimeout(() => resolve(exUser), 1000);
       } else {
-        setTimeout(
-          () => reject(new Error('Invalid Email/Password')),
-          1000,
-        );
+        setTimeout(() => reject(new Error('Invalid Email/Password')), 1000);
       }
     });
 

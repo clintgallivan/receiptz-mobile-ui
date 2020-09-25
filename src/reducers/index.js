@@ -8,6 +8,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
+  whitelist: ['session'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

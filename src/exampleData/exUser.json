@@ -1,17 +1,17 @@
 {
-    "_id": "1234",
-    "metadata": {
-        "userName": "jJones",
-        "email": "JorgeJones@gmail.com",
-        "name": {"first": "Jorge", "last": "Jones", "middle": null},
-        "phoneNumber": "805-258-9999"
-    },
-    "cards": [
-        {"bankName": "BofA", "lastFourDigits": 1234},
-        {"bankName": "BofA", "lastFourDigits": 1234},
-        {"bankName": "BofA", "lastFourDigits": 1234},
-        {"bankName": "BofA", "lastFourDigits": 1234}
-    ],
-    "receipts": [],
-    "count": "100"
+  "_id": "1234",
+  "metadata": {
+    "userName": "jJones",
+    "email": "JorgeJones@gmail.com",
+    "name": {"first": "Jorge", "last": "Jones", "middle": null},
+    "phoneNumber": "805-258-9999"
+  },
+  "cards": [
+    {"bankName": "BofA", "lastFourDigits": 1234},
+    {"bankName": "BofA", "lastFourDigits": 1234},
+    {"bankName": "BofA", "lastFourDigits": 1234},
+    {"bankName": "BofA", "lastFourDigits": 1234}
+  ],
+  "receipts": [],
+  "count": "100"
 }

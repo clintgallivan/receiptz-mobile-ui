@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-} from 'react-native';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import {View, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import getUser from 'selectors/UserSelectors';
 import Colors from 'helpers/Colors';
@@ -28,9 +25,7 @@ function AuthHandler(props) {
     }
   });
 
-  return (
-    <View style={styles.container} />
-  );
+  return <View style={styles.container} />;
 }
 
 AuthHandler.propTypes = {

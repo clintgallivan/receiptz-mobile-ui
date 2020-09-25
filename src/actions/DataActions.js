@@ -41,7 +41,7 @@ export const getUserReceipts = user_id => async dispatch => {
   console.log('Something');
   dispatch(dataRequest());
   try {
-    const data = await ReceiptsController.getUserRecepts(user_id);
+    const data = await ReceiptsController.getUserReceipts(user_id);
     dispatch(requestSuccess(data));
   } catch (error) {
     dispatch(requestError(error.message));

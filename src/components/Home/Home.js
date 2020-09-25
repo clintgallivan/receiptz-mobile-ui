@@ -92,9 +92,17 @@ function Home(props) {
     );
   };
   useEffect(() => {
-    dispatch(getUserReceipts(user._id));
-    console.log('data', {data, isLoading, errors});
-  }, []);
+    if (user) {
+      const id = user._id;
+      if (id) {
+        dispatch(getUserReceipts(user._id));
+      }
+      console.log('data', {data, isLoading, errors});
+    }
+  }, [user]);
+
+  console.log('youyyoyyo');
+  console.log(user);
 
   useEffect(() => {
     console.log('clickeReceipt');

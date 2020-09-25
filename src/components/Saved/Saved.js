@@ -9,6 +9,7 @@ import strings from 'localization';
 import SearchBar from '../common/SearchBar';
 import Ellipse from '../common/Ellipse';
 import ListButton from '../common/ListButton';
+import ErrorView from '../common/ErrorView';
 
 import getUser from 'selectors/UserSelectors';
 import getData from 'selectors/DataSelectors';

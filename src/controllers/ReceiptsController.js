@@ -1,12 +1,12 @@
 // import httpClient from './HttpClient';
-import data from '../exampleData/receipts.json'
+import data from '../exampleData/receipts.json';
 
 class ReceiptsController {
-    constructor() {
-      this.basePath = '/receipts';
-    }
-  
-    getUserRecepts = async (userId) =>
+  constructor() {
+    this.basePath = '/receipts';
+  }
+
+  getUserReceipts = async userId =>
     // Real implementation of a login request using the HttpClient
     /* try {
       const result = await httpClient.post({
@@ -23,16 +23,14 @@ class ReceiptsController {
       return error;
     }
     */
-      // This is a mocked example to simulate api behavior
-      new Promise((resolve, reject) => {
-        if (userId) {
-            resolve(data)
-        } else {
-          throw reject(new Error('no data found'))
-        }
-      });
-  
-  }
-  
-  export default new ReceiptsController();
-  
+    // This is a mocked example to simulate api behavior
+    new Promise((resolve, reject) => {
+      if (userId) {
+        resolve(data);
+      } else {
+        throw reject(new Error('no data found'));
+      }
+    });
+}
+
+export default new ReceiptsController();
