@@ -103,7 +103,6 @@ function Home(props) {
 
   console.log('youyyoyyo');
   console.log(user);
-
   useEffect(() => {
     console.log('clickeReceipt');
     console.log(clickedReceipt);
