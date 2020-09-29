@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
     alignItems: 'center',
     backgroundColor: Colors.signupButton,
+    borderRadius: 4,
   },
   login: {
     alignSelf: 'stretch',

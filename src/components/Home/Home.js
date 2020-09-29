@@ -67,6 +67,8 @@ function Home(props) {
   //   data.forEach(item => console.log(item.metadata.storeName));
   // };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const _renderItem = ({item}) => {
     if (!item) {
       return null;

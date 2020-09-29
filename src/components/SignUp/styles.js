@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: Colors.inputBackground,
     // padding: 10,
+    borderRadius: 4,
   },
   textInputStyle: {
     color: Colors.inputTextColor,
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
     alignItems: 'center',
     backgroundColor: Colors.signupButton,
+    borderRadius: 4,
   },
   login: {
     alignSelf: 'stretch',
