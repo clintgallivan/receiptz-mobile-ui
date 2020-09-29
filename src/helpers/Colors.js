@@ -10,4 +10,5 @@ export default {
   primaryText: '#233064',
   inputBackground: '#E9F3FF',
   inputTextColor: '#606060',
+  signupButton: '#f8d26d',
 };

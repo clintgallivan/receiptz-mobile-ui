@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, YellowBox} from 'react-native';
 import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   textInputStyle: {
     color: Colors.inputTextColor,
     fontFamily: 'AvenirNext-Regular',
-    fontSize: 12,
+    fontSize: 13,
   },
   entryContainer: {
     alignSelf: 'stretch',
@@ -31,18 +31,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     backgroundColor: Colors.gray,
   },
-  login: {
-    alignSelf: 'stretch',
-    // marginTop: 70,
-    marginHorizontal: 20,
-    // backgroundColor: 'blue',
-  },
   signup: {
     alignSelf: 'stretch',
-    marginTop: 23,
-    marginHorizontal: 20,
+    // marginTop: 20,
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: Colors.signupButton,
+  },
+  login: {
+    alignSelf: 'stretch',
+    backgroundColor: Colors.transparent,
+    borderWidth: 2,
+    borderRadius: 4,
+    borderColor: Colors.signupButton,
+    color: 'blue',
   },
   signupText: {
     color: Colors.white,

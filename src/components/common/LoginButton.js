@@ -4,6 +4,12 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import TextStyles from 'helpers/TextStyles';
 import Colors from 'helpers/Colors';
 
+const LoginButton = props => (
+  <TouchableOpacity {...props} style={[styles.button, props.style]}>
+    <Text style={[TextStyles.fieldTitle, props.textStyle]}>{props.title}</Text>
+  </TouchableOpacity>
+);
+
 const styles = StyleSheet.create({
   button: {
     alignSelf: 'stretch',
@@ -12,18 +18,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8d26d',
     // borderColor: Colors.white,
     // borderWidth: 2,
-    // marginTop: 10,
-    padding: 5,
+    marginTop: 10,
+    // padding: 5,
     height: 36,
-    borderRadius: 4,
+    // borderRadius: 4,
   },
 });
-
-const LoginButton = props => (
-  <TouchableOpacity {...props} style={[styles.button, props.style]}>
-    <Text style={[TextStyles.fieldTitle, props.textStyle]}>{props.title}</Text>
-  </TouchableOpacity>
-);
 
 LoginButton.propTypes = {
   style: PropTypes.object,

@@ -13,8 +13,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginBottom: 20,
-    backgroundColor: Colors.secondary,
+    backgroundColor: Colors.inputBackground,
     padding: 10,
+  },
+  textInputStyle: {
+    color: Colors.inputTextColor,
+    fontFamily: 'AvenirNext-Regular',
+    fontSize: 13,
   },
   entryContainer: {
     alignSelf: 'stretch',
@@ -23,18 +28,20 @@ const styles = StyleSheet.create({
     marginVertical: 40,
     padding: 40,
     justifyContent: 'space-evenly',
-    //  backgroundColor: Colors.gray,
-  },
-  login: {
-    alignSelf: 'stretch',
-    marginTop: 70,
-    marginHorizontal: 20,
+    backgroundColor: Colors.white,
   },
   signup: {
     alignSelf: 'stretch',
-    marginTop: 70,
-    marginHorizontal: 20,
+    // marginTop: 20,
     alignItems: 'center',
+    backgroundColor: Colors.signupButton,
+  },
+  login: {
+    alignSelf: 'stretch',
+    backgroundColor: Colors.transparent,
+    borderWidth: 2,
+    borderRadius: 4,
+    borderColor: Colors.signupButton,
   },
   signupText: {
     color: Colors.white,

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from '../helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   textField: {
     fontSize: 15,
     fontWeight: 'normal',
-    color: Colors.white
+    color: Colors.white,
   },
   fieldTitle: {
     fontSize: 16,
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   error: {
     fontSize: 14,
     color: Colors.red,
+    fontFamily: 'AvenirNext-Bold',
   },
 });
 

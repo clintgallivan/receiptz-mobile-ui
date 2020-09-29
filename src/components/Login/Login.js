@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LoginButton from '../common/LoginButton';
+import SignupButton from '../common/SignupButton';
 import Logo from '../common/Logo';
 import TextField from '../common/TextField';
 import ErrorView from '../common/ErrorView';
@@ -68,24 +69,21 @@ function Login(props) {
             secureTextEntry
           />
         </View>
+        {/* <ErrorView errors={errors} /> */}
         <ErrorView errors={errors} />
-        <LoginButton style={styles.login} />
+
+        {/* <LoginButton style={styles.login} /> */}
+        <LoginButton
+          placeholderTextColor="blue"
+          style={styles.signup}
+          onPress={() => props.navigation.push('SignUp')}
+          title={strings.createAccount}
+        />
         <LoginButton
           style={styles.login}
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.login}
         />
-        <View style={styles.signup}>
-          <TouchableOpacity>
-            <Text
-              style={styles.signupText}
-              onPress={() => {
-                props.navigation.navigate('SignUp');
-              }}>
-              {strings.signup}
-            </Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </View>
   );
