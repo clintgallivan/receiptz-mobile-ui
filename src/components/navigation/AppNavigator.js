@@ -44,7 +44,7 @@ const AppStack = createBottomTabNavigator(
     Home: HomeStack,
     User: UserStack,
     Saved: SavedStack,
-    // Profile: ProfileStack,
+    Profile: ProfileStack,
   },
   {
     tabBarPosition: 'bottom',

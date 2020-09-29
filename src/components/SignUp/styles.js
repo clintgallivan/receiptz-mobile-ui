@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
   },
   formContainer: {
     alignSelf: 'stretch',
@@ -14,14 +14,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 20,
     backgroundColor: Colors.inputBackground,
-    padding: 10,
+    // padding: 10,
   },
   textInputStyle: {
     color: Colors.inputTextColor,
     fontFamily: 'AvenirNext-Regular',
     fontSize: 13,
+    padding: 10,
   },
   entryContainer: {
+    // flex: 0,
     alignSelf: 'stretch',
     alignItems: 'flex-end',
     alignContent: 'space-between',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
   },
   signup: {
     alignSelf: 'stretch',
-    // marginTop: 20,
+    marginTop: 80,
     alignItems: 'center',
     backgroundColor: Colors.signupButton,
   },

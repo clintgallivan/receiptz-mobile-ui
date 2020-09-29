@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -50,6 +50,9 @@ function Login(props) {
     <View style={styles.container}>
       <Logo />
       <View style={styles.entryContainer}>
+        <View style={styles.fillerFormContainer}>
+          <TextField style={styles.textInputStyle} />
+        </View>
         <View style={styles.formContainer}>
           <TextField
             style={styles.textInputStyle}
@@ -69,12 +72,14 @@ function Login(props) {
             secureTextEntry
           />
         </View>
+        <View style={styles.fillerFormContainer}>
+          <TextField style={styles.textInputStyle} />
+        </View>
         {/* <ErrorView errors={errors} /> */}
         <ErrorView errors={errors} />
 
         {/* <LoginButton style={styles.login} /> */}
         <LoginButton
-          placeholderTextColor="blue"
           style={styles.signup}
           onPress={() => props.navigation.push('SignUp')}
           title={strings.createAccount}
