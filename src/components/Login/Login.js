@@ -51,7 +51,7 @@ function Login(props) {
       <Logo />
       <View style={styles.entryContainer}>
         <View style={styles.fillerFormContainer}>
-          <TextField style={styles.textInputStyle} />
+          <TextField style={styles.textInputStyle} editable={false} />
         </View>
         <View style={styles.formContainer}>
           <TextField
@@ -73,7 +73,7 @@ function Login(props) {
           />
         </View>
         <View style={styles.fillerFormContainer}>
-          <TextField style={styles.textInputStyle} />
+          <TextField style={styles.textInputStyle} editable={false} />
         </View>
         {/* <ErrorView errors={errors} /> */}
         <ErrorView errors={errors} />
@@ -81,10 +81,13 @@ function Login(props) {
         {/* <LoginButton style={styles.login} /> */}
         <LoginButton
           style={styles.signup}
-          onPress={() => props.navigation.push('SignUp')}
+          onPress={() => {
+            props.navigation.push('SignUp');
+          }}
           title={strings.createAccount}
         />
         <LoginButton
+          textStyle={{color: Colors.signupButton}}
           style={styles.login}
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.login}

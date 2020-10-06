@@ -17,9 +17,11 @@ const ListButton = props => {
       <TouchableOpacity
         {...props}
         style={[styles.buttonList, props.style]}
-        onPress={() => {
-          dispatch(clickedReceipt(props.item));
-        }}>
+        onPress={props.clicked}
+        // onPress={() => {
+        //   dispatch(clickedReceipt(props.item)); //* COMMENT THIS BACK IN AFTER MODAL TESTING COMPLETE
+        // }}
+      >
         <View style={styles.dataView}>
           <Text style={styles.headerPrimary}>{props.headerPrimary}</Text>
           <Text style={styles.headerSecondary}>{props.headerSecondary}</Text>

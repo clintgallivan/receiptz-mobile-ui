@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 4,
     borderColor: Colors.signupButton,
+    marginTop: 23,
   },
   signupText: {
     color: Colors.white,

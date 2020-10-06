@@ -99,6 +99,7 @@ function SignUp(props) {
           title={isLoading ? strings.loading : strings.createAccount}
         />
         <LoginButton
+          textStyle={{color: Colors.signupButton}}
           style={styles.login}
           onPress={() => props.navigation.push('Login')}
           title={strings.login}

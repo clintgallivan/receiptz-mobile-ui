@@ -14,7 +14,7 @@ export default createAppContainer(
       Onboarding,
     },
     {
-      initialRouteName: 'AuthHandler',
+      initialRouteName: 'Auth',
       // initialRouteName: 'Onboarding',
     },
   ),
