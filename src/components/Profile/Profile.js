@@ -67,10 +67,10 @@ function Profile(props) {
       lPlus: cPlus + rPlus * 0.6,
       dV: `M${cPlus} ${cPlus - lLength} V${cPlus + lLength}`,
       dH: `M${cPlus - lLength} ${cPlus} H${cPlus + lLength}`,
-      fontSize: 43,
+      fontSize: 41,
     };
   };
-  const sqrProfImg = deriveSqrProfImg(132);
+  const sqrProfImg = deriveSqrProfImg(90);
   const _renderItem = ({item}) => {
     return (
       <ListButton
@@ -102,14 +102,17 @@ function Profile(props) {
           width={sqrProfImg.d}
           height={sqrProfImg.d}>
           <Circle
-            fill={Colors.gray} //"rgba(216,216,216,1)"
+            fill={Colors.inputBackground} //"rgba(216,216,216,1)"
             fillOpacity={1}
             cx={sqrProfImg.r}
             cy={sqrProfImg.r}
             r={sqrProfImg.r}
           />
           <SVGText
-            fill={Colors.white}
+            // strokeWidth={1}
+            style={{fontFamily: 'AvenirNext-Regular'}}
+            fontWeight="lighter"
+            fill={Colors.primaryText}
             fontSize={sqrProfImg.fontSize}
             x={sqrProfImg.r}
             y={sqrProfImg.r + sqrProfImg.fontSize / 3}
@@ -122,8 +125,8 @@ function Profile(props) {
           </SVGText>
           <Circle
             onPress={() => console.log('button pressed')}
-            fill={Colors.secondary} //todo change colors based on click
-            fillOpacity={1}
+            fill={Colors.primaryText} //todo change colors based on click
+            fillOpacity={0.25}
             cx={sqrProfImg.cPlus}
             cy={sqrProfImg.cPlus}
             r={sqrProfImg.rPlus}
@@ -151,11 +154,11 @@ function Profile(props) {
         <Text style={styles.userName}>
           {user ? `${user.metadata.name.first} ${user.metadata.name.last}` : ''}
         </Text>
-        <View style={styles.displayName}>
+        {/* <View style={styles.displayName}> //* Logout Button -- relocate
           <TouchableOpacity onPress={logoutUser}>
             <Text style={styles.logout}>{strings.logout}</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
       <SectionList
         sections={sections}

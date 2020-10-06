@@ -6,12 +6,10 @@ import {
   ScrollView,
   Dimensions,
   Button,
+  StyleSheet,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import Modal from 'react-native-modal';
-
-import {styles} from './styles';
-import {modalStyles} from './styles';
 
 import Logo from '../common/Logo';
 
@@ -41,26 +39,18 @@ const ReceiptModal = props => (
   <Modal
     {...props}
     style={modalStyles.modalContainer}
-    deviceHeight={windowHeight}
-    propagateSwipe={true}
-    isVisible={isModalVisible}
-    swipeThreshold={100}
-    onSwipeComplete={() => {
-      setModalVisible(false);
-    }}
-    swipeDirection={['down']}
-    scrollTo={handleScrollTo}
-    scrollOffset={1}
-    onBackdropPress={() => setModalVisible(false)}>
+    deviceHeight={props.deviceHeight}
+    isVisible={props.isVisible}
+    onBackdropPress={props.onBackDropPress}>
     <TouchableWithoutFeedback
       onPress={console.log('hello')}
       style={modalStyles.touchable}>
-      <ScrollView onScroll={handleScroll}>
+      <ScrollView>
         <View style={modalStyles.modalView}>
           <LoginButton
             style={{backgroundColor: Colors.primary, borderRadius: 4}}
             title="Close Receipt"
-            onPress={toggleModal}
+            onPress={props.toggleModal}
           />
           <Text />
           <Text />

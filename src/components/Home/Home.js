@@ -57,7 +57,7 @@ function Home(props) {
 
   const windowHeight = Dimensions.get('window').height;
 
-  const [isModalVisible, setModalVisible] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     isModalVisible === true ? setModalVisible(false) : setModalVisible(true);
@@ -164,16 +164,16 @@ function Home(props) {
         // transparent={true}
         style={modalStyles.modalContainer}
         deviceHeight={windowHeight}
-        propagateSwipe={true}
+        // propagateSwipe={true}
         isVisible={isModalVisible}
-        swipeThreshold={100}
-        onSwipeComplete={() => {
-          setModalVisible(false);
-        }}
-        swipeDirection={['down']}
+        // swipeThreshold={100}
+        // onSwipeComplete={() => {
+        //   setModalVisible(false);
+        // }}
+        // swipeDirection={['down']}
         // scrollOffsetMax={10}
-        scrollTo={handleScrollTo}
-        scrollOffset={1}
+        // scrollTo={handleScrollTo}
+        // scrollOffset={1}
         onBackdropPress={() => setModalVisible(false)}>
         {/* <View flex={1}> */}
         <TouchableWithoutFeedback

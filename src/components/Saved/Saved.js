@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -10,6 +10,7 @@ import SearchBar from '../common/SearchBar';
 import Ellipse from '../common/Ellipse';
 import ListButton from '../common/ListButton';
 import ErrorView from '../common/ErrorView';
+import ReceiptModal from '../common/ReceiptModal';
 
 import getUser from 'selectors/UserSelectors';
 import getData from 'selectors/DataSelectors';
@@ -36,12 +37,21 @@ const Saved = props => {
 
   const [term, setTerm] = useState('');
 
+  const windowHeight = Dimensions.get('window').height;
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    isModalVisible === true ? setModalVisible(false) : setModalVisible(true);
+  };
+
   const _renderItem = ({item}) => {
     return (
       <View>
         <View style={styles.listButtonContainer}>
           <Ellipse />
           <ListButton
+            clicked={toggleModal}
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
             bookMarkIcon={
@@ -93,6 +103,12 @@ const Saved = props => {
     </View>
   ) : (
     <View style={styles.container}>
+      <ReceiptModal
+        deviceHeight={windowHeight}
+        isVisible={isModalVisible}
+        onBackDropPress={() => setModalVisible(false)}
+        toggleModal={toggleModal}
+      />
       <SearchBar term={term} setTerm={setTerm} />
       <FlatList data={finalList} renderItem={_renderItem} />
     </View>

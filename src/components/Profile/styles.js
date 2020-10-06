@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -25,14 +25,13 @@ const styles = StyleSheet.create({
     //left: 0,
     width: 132,
     height: 132,
-    backgroundColor: Colors.black,//'transparent',
+    backgroundColor: Colors.black, //'transparent',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     //position: "absolute",
   },
   displayName: {
-  
     //top: 0,
     //left: 0,
     //width: 132,
@@ -43,22 +42,22 @@ const styles = StyleSheet.create({
     margin: 10,
     //paddingBottom: 30,
 
-
     //position: "absolute",
   },
   userName: {
-    fontSize: 22,
-    textAlign: "center",
-    textAlignVertical: "top",
-    fontWeight: 'normal',
-    color: Colors.darkGray
+    fontSize: 24,
+    textAlign: 'center',
+    textAlignVertical: 'top',
+    // fontWeight: 'normal',
+    color: Colors.primaryText,
+    fontFamily: 'AvenirNext-Bold',
   },
   logout: {
     fontSize: 12,
-    textAlign: "center",
-    textAlignVertical: "bottom",
+    textAlign: 'center',
+    textAlignVertical: 'bottom',
     fontWeight: 'normal',
-    color: Colors.darkGray
+    color: Colors.darkGray,
   },
   profileHeader: {
     justifyContent: 'center',
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'transparent',
     paddingTop: 10,
-
   },
   dataHeaders: {
     justifyContent: 'center',
@@ -75,8 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     padding: 10,
     paddingLeft: 20,
-
-  }
+  },
 });
 
 export default styles;
