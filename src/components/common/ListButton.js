@@ -23,15 +23,19 @@ const ListButton = props => {
         // }}
       >
         <View style={styles.dataView}>
-          <Text style={styles.headerPrimary}>{props.headerPrimary}</Text>
-          <Text style={styles.headerSecondary}>{props.headerSecondary}</Text>
+          {/* <Text style={styles.headerPrimary}>{props.headerPrimary}</Text>
+          <Text style={styles.headerSecondary}>{props.headerSecondary}</Text> */}
+          <Text style={props.headerPrimaryStyle}>{props.headerPrimary}</Text>
+          <Text style={props.headerSecondaryStyle}>
+            {props.headerSecondary}
+          </Text>
         </View>
         {/* <Text style={styles.linkDescription}>
         {props.linkDescription} */}
         <FontAwesome
           name={props.bookMarkIcon}
-          size={25}
-          color="#C4C4C4"
+          size={props.bookMarkIconSize}
+          color={props.bookMarkIconColor}
           onPress={() => {
             dispatch(clickedBookmark(props.item));
           }}

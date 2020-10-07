@@ -54,9 +54,13 @@ const Saved = props => {
             clicked={toggleModal}
             headerPrimary={item.metadata.storeName}
             headerSecondary={item.metadata.date}
+            headerPrimaryStyle={styles.headerPrimaryStyle}
+            headerSecondaryStyle={styles.headerSecondaryStyle}
             bookMarkIcon={
               item.metadata.bookMarked === 'no' ? 'bookmark-o' : 'bookmark'
             }
+            bookMarkIconColor="#C4C4C4"
+            bookMarkIconSize={25}
             item={item}
           />
         </View>

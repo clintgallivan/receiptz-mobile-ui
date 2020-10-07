@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -24,7 +24,22 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignSelf: 'stretch',
     marginHorizontal: 31,
-  }
+  },
+  headerPrimaryStyle: {
+    color: '#233064',
+    // opacity: 1,
+    fontSize: 17,
+    textAlign: 'left',
+    fontFamily: 'AvenirNext-Bold',
+  },
+  headerSecondaryStyle: {
+    color: '#C4C4C4',
+    opacity: 1,
+    fontSize: 11,
+    textAlign: 'left',
+    marginTop: 7,
+    fontFamily: 'AvenirNext-Regular',
+  },
 });
 
 export default styles;

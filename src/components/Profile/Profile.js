@@ -15,6 +15,7 @@ import Colors from 'helpers/Colors';
 import TextStyles from 'helpers/TextStyles';
 import {logout} from 'actions/UserActions';
 import getUser from 'selectors/UserSelectors';
+import LocalizedStrings from 'react-native-localization';
 
 function Profile(props) {
   const user = useSelector(state => getUser(state));
@@ -30,6 +31,11 @@ function Profile(props) {
   let sections = [
     {
       id: 0,
+      title: 'Card Information',
+      data: cardData,
+    },
+    {
+      id: 1,
       title: 'Account Information',
       data: [
         {
@@ -42,11 +48,6 @@ function Profile(props) {
           info: ['Phone Number', user ? user.metadata.phoneNumber : ''],
         },
       ],
-    },
-    {
-      id: 1,
-      title: 'Card Information',
-      data: cardData,
     },
   ];
 
@@ -72,19 +73,53 @@ function Profile(props) {
   };
   const sqrProfImg = deriveSqrProfImg(90);
   const _renderItem = ({item}) => {
+    console.log(_renderSectionHeader);
     return (
-      <ListButton
-        headerPrimary={item.info[0]}
-        headerSecondary={item.info[1]}
-        linkDescription={'Edit'}
-      />
+      <View>
+        <View style={styles.listButtonContainer}>
+          <ListButton
+            headerPrimary={item.info[0]}
+            headerSecondary={item.info[1]}
+            headerPrimaryStyle={styles.headerPrimaryStyle}
+            headerSecondaryStyle={styles.addCard}
+            linkDescription={'Edit'}
+            bookMarkIcon="pencil"
+            bookMarkIconColor={Colors.primaryText}
+            bookMarkIconSize={19}
+          />
+        </View>
+
+        <View style={styles.line} />
+      </View>
+    );
+  };
+  const _renderSectionFooter = _renderSectionHeader => {
+    // console.log(_renderSectionHeader.section.title);
+    if (_renderSectionHeader.section.title === 'Card Information') {
+      return (
+        <View style={styles.addCardContainer}>
+          <ListButton
+            headerSecondary="Add Cards"
+            headerSecondaryStyle={styles.addCard}
+          />
+        </View>
+      );
+    }
+    return (
+      <View>
+        <LoginButton
+          onPress={logoutUser}
+          title={strings.logout}
+          style={styles.logout}
+        />
+      </View>
     );
   };
 
   const _renderSectionHeader = ({section}) => {
     return (
       <View style={styles.dataHeaders}>
-        <Text style={TextStyles.textField}>{section.title}</Text>
+        <Text style={styles.dataHeaderText}>{section.title}</Text>
       </View>
     );
   };
@@ -154,6 +189,8 @@ function Profile(props) {
         <Text style={styles.userName}>
           {user ? `${user.metadata.name.first} ${user.metadata.name.last}` : ''}
         </Text>
+        <Text style={styles.subUserName}>SAVING RECEIPTS SINCE 2017</Text>
+        {/* change 2017 to populated date */}
         {/* <View style={styles.displayName}> //* Logout Button -- relocate
           <TouchableOpacity onPress={logoutUser}>
             <Text style={styles.logout}>{strings.logout}</Text>
@@ -164,6 +201,7 @@ function Profile(props) {
         sections={sections}
         renderItem={_renderItem}
         renderSectionHeader={_renderSectionHeader}
+        renderSectionFooter={_renderSectionFooter}
         keyExtractor={extractKey}
       />
     </View>
