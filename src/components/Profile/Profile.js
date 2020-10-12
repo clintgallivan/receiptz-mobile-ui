@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, SectionList} from 'react-native';
 import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
 import Svg, {Path, Circle, Text as SVGText} from 'react-native-svg';
+import Feather from 'react-native-vector-icons/Feather';
 
 import ListButton from '../common/ListButton';
 import LoginButton from '../common/LoginButton';
@@ -72,23 +73,25 @@ function Profile(props) {
     };
   };
   const sqrProfImg = deriveSqrProfImg(90);
+
   const _renderItem = ({item}) => {
     console.log(_renderSectionHeader);
     return (
       <View>
-        <View style={styles.listButtonContainer}>
-          <ListButton
-            headerPrimary={item.info[0]}
-            headerSecondary={item.info[1]}
-            headerPrimaryStyle={styles.headerPrimaryStyle}
-            headerSecondaryStyle={styles.addCard}
-            linkDescription={'Edit'}
-            bookMarkIcon="pencil"
-            bookMarkIconColor={Colors.primaryText}
-            bookMarkIconSize={19}
-          />
-        </View>
-
+        <TouchableOpacity>
+          <View style={styles.listButtonContainer}>
+            <ListButton
+              headerPrimary={item.info[0]}
+              headerSecondary={item.info[1]}
+              headerPrimaryStyle={styles.headerPrimaryStyle}
+              headerSecondaryStyle={styles.addCard}
+              linkDescription={'Edit'}
+              bookMarkIcon="edit"
+              bookMarkIconColor={Colors.primaryText}
+              bookMarkIconSize={19}
+            />
+          </View>
+        </TouchableOpacity>
         <View style={styles.line} />
       </View>
     );
@@ -97,12 +100,22 @@ function Profile(props) {
     // console.log(_renderSectionHeader.section.title);
     if (_renderSectionHeader.section.title === 'Card Information') {
       return (
-        <View style={styles.addCardContainer}>
-          <ListButton
-            headerSecondary="Add Cards"
-            headerSecondaryStyle={styles.addCard}
-          />
-        </View>
+        <TouchableOpacity>
+          <View style={styles.addCardContainer}>
+            <Feather
+              style={{marginRight: 7}}
+              name="plus"
+              size={22}
+              color={Colors.primaryText}
+
+              // onPress={console.log(Colors.primaryText)}
+            />
+            <Text style={styles.addCard}>Add Cards</Text>
+            <ListButton>
+              {/* <Text style={styles.addCard}>Add Cards</Text> */}
+            </ListButton>
+          </View>
+        </TouchableOpacity>
       );
     }
     return (

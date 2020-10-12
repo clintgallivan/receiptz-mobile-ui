@@ -131,7 +131,10 @@ const styles = StyleSheet.create({
     fontFamily: 'AvenirNext-Regular',
   },
   addCardContainer: {
-    // backgroundColor: 'black',
+    // margin: 10,
+    // backgroundColor: 'yellow',
+    flexDirection: 'row',
+    alignItems: 'center',
     marginHorizontal: 31,
     justifyContent: 'center',
   },

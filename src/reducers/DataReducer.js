@@ -5,6 +5,7 @@ const initialState = {
   data: null,
   clickedReceipt: null,
   clickedBookmark: null,
+  item: null,
 };
 
 const dataReducer = (state = initialState, action) => {

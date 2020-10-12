@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Ellipse = () => (
+const Ellipse = props => (
   <View style={styles.ellipse}>
     <Svg height="31" width="31">
       <Circle cx="15.5" cy="15.5" r="15.5" fill="#41969F" />

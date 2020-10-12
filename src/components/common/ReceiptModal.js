@@ -34,150 +34,80 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
 import ReceiptsController from 'controllers/ReceiptsController';
+import dataReducer from 'reducers/DataReducer';
 
-const ReceiptModal = props => (
-  <Modal
-    {...props}
-    style={modalStyles.modalContainer}
-    deviceHeight={props.deviceHeight}
-    isVisible={props.isVisible}
-    onBackdropPress={props.onBackDropPress}>
-    <TouchableWithoutFeedback
-      onPress={console.log('hello')}
-      style={modalStyles.touchable}>
-      <ScrollView>
-        <View style={modalStyles.modalView}>
-          <LoginButton
-            style={{backgroundColor: Colors.primary, borderRadius: 4}}
-            title="Close Receipt"
-            onPress={props.toggleModal}
-          />
-          <Text />
-          <Text />
-          {/* <View style={modalStyles.modalView}> */}
-          <Text>Trader Joes</Text>
-          <Text>5473 East 82nd Street</Text>
-          <Text>Indianapolis IN 46250</Text>
-          <Text>Store # 671 - (317) 595-8950</Text>
-          <Text />
-          <Text>OPEN 8:00AM TO 9:00PM DAILY</Text>
-          <Text />
-          <View style={modalStyles.lineItems}>
-            <Text>RICE BASMATI FROM INDIA</Text>
-            <Text>2.99</Text>
+const ReceiptModal = props => {
+  const _renderItem = ({item}) => {
+    return (
+      <View style={modalStyles.lineItems.item}>
+        <Text>PENNE ARRABBIATA</Text>
+        <Text>2.99</Text>
+      </View>
+    );
+  };
+
+  const item = useSelector(state => state.data.clickedReceipt);
+  if (!item) return null;
+  return (
+    <Modal
+      {...props}
+      style={modalStyles.modalContainer}
+      deviceHeight={props.deviceHeight}
+      isVisible={props.isVisible}
+      onBackdropPress={props.onBackDropPress}>
+      <TouchableWithoutFeedback
+        // onPress={console.log('hello')}
+        style={modalStyles.touchable}>
+        <ScrollView>
+          <View style={modalStyles.modalView}>
+            <LoginButton
+              style={{backgroundColor: Colors.primary, borderRadius: 4}}
+              title="Close Receipt"
+              onPress={props.toggleModal}
+            />
+            <Text />
+            <Text />
+            {/* <View style={modalStyles.modalView}> */}
+            <Text>{item.metadata.storeName}</Text>
+            <Text>{item.metadata.address}</Text>
+
+            <Text>Store # {item.metadata.phone}</Text>
+            <Text />
+            <Text>{item.metadata.storeHours}</Text>
+            <Text />
+            {/* <FlatList data={} renderItem={_renderItem}/> */}
+            <View style={modalStyles.lineItems}>
+              <Text>{item.lineItems.item}</Text>
+              <Text>2.99</Text>
+            </View>
+            <View style={modalStyles.lineItems.item}>
+              <Text>PENNE ARRABBIATA</Text>
+              <Text>2.99</Text>
+            </View>
+            <Text />
+            <View style={modalStyles.lineItems}>
+              <Text>SUBTOTAL</Text>
+              <Text>$5.98</Text>
+            </View>
+            <View style={modalStyles.lineItems}>
+              <Text>STATE TAX</Text>
+              <Text>$0.07</Text>
+            </View>
+            <View style={modalStyles.lineItems}>
+              <Text>TOTAL</Text>
+              <Text>$6.05</Text>
+            </View>
+
+            {/* </View> */}
           </View>
-          <View style={modalStyles.lineItems}>
-            <Text>PENNE ARRABBIATA</Text>
-            <Text>2.99</Text>
-          </View>
-          <Text />
-          <View style={modalStyles.lineItems}>
-            <Text>SUBTOTAL</Text>
-            <Text>$5.98</Text>
-          </View>
-          <View style={modalStyles.lineItems}>
-            <Text>STATE TAX</Text>
-            <Text>$0.07</Text>
-          </View>
-          <View style={modalStyles.lineItems}>
-            <Text>TOTAL</Text>
-            <Text>$6.05</Text>
-          </View>
-          {/* --------------------------------------------------------- */}
-          <Text>Trader Joes</Text>
-          <Text>5473 East 82nd Street</Text>
-          <Text>Indianapolis IN 46250</Text>
-          <Text>Store # 671 - (317) 595-8950</Text>
-          <Text />
-          <Text>OPEN 8:00AM TO 9:00PM DAILY</Text>
-          <Text />
-          <View style={modalStyles.lineItems}>
-            <Text>RICE BASMATI FROM INDIA</Text>
-            <Text>2.99</Text>
-          </View>
-          <View style={modalStyles.lineItems}>
-            <Text>PENNE ARRABBIATA</Text>
-            <Text>2.99</Text>
-          </View>
-          <Text />
-          <View style={modalStyles.lineItems}>
-            <Text>SUBTOTAL</Text>
-            <Text>$5.98</Text>
-          </View>
-          <View style={modalStyles.lineItems}>
-            <Text>STATE TAX</Text>
-            <Text>$0.07</Text>
-          </View>
-          <View style={modalStyles.lineItems}>
-            <Text>TOTAL</Text>
-            <Text>$6.05</Text>
-          </View>
-          {/* <Text>Trader Joes</Text>
-              <Text>5473 East 82nd Street</Text>
-              <Text>Indianapolis IN 46250</Text>
-              <Text>Store # 671 - (317) 595-8950</Text>
-              <Text />
-              <Text>OPEN 8:00AM TO 9:00PM DAILY</Text>
-              <Text />
-              <View style={modalStyles.lineItems}>
-                <Text>RICE BASMATI FROM INDIA</Text>
-                <Text>2.99</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>PENNE ARRABBIATA</Text>
-                <Text>2.99</Text>
-              </View>
-              <Text />
-              <View style={modalStyles.lineItems}>
-                <Text>SUBTOTAL</Text>
-                <Text>$5.98</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>STATE TAX</Text>
-                <Text>$0.07</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>TOTAL</Text>
-                <Text>$6.05</Text>
-              </View>
-              <Text>Trader Joes</Text>
-              <Text>5473 East 82nd Street</Text>
-              <Text>Indianapolis IN 46250</Text>
-              <Text>Store # 671 - (317) 595-8950</Text>
-              <Text />
-              <Text>OPEN 8:00AM TO 9:00PM DAILY</Text>
-              <Text />
-              <View style={modalStyles.lineItems}>
-                <Text>RICE BASMATI FROM INDIA</Text>
-                <Text>2.99</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>PENNE ARRABBIATA</Text>
-                <Text>2.99</Text>
-              </View>
-              <Text />
-              <View style={modalStyles.lineItems}>
-                <Text>SUBTOTAL</Text>
-                <Text>$5.98</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>STATE TAX</Text>
-                <Text>$0.07</Text>
-              </View>
-              <View style={modalStyles.lineItems}>
-                <Text>TOTAL</Text>
-                <Text>$6.05</Text>
-              </View> */}
-          {/* --------------------------------------------------------- */}
-          {/* </View> */}
-        </View>
-        {/* </TouchableWithoutFeedback> */}
-        {/* </TouchableOpacity> */}
-      </ScrollView>
-    </TouchableWithoutFeedback>
-    {/* </View> */}
-  </Modal>
-);
+          {/* </TouchableWithoutFeedback> */}
+          {/* </TouchableOpacity> */}
+        </ScrollView>
+      </TouchableWithoutFeedback>
+      {/* </View> */}
+    </Modal>
+  );
+};
 
 const modalStyles = StyleSheet.create({
   centeredView: {
