@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 import TextStyles from 'helpers/TextStyles';
 import Colors from 'helpers/Colors';
 
@@ -28,6 +24,7 @@ const styles = StyleSheet.create({
 const TextField = props => (
   <View style={styles.container}>
     <TextInput
+      clearButtonMode="while-editing"
       placeholderTextColor={Colors.white}
       {...props}
       style={[TextStyles.textField, styles.field, props.style]}

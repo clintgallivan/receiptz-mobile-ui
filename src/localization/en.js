@@ -17,4 +17,6 @@ export default {
   settings: 'Settings',
   home: 'Receiptz',
   saved: 'Saved Receiptz',
+  back: 'Back',
+  save: 'Save',
 };

@@ -8,6 +8,8 @@ import Home from '../Home';
 import User from '../User';
 import Saved from '../Saved';
 
+import SettingItemEdit from '../common/SettingItemEdit';
+
 import receiptIcon from 'assets/ic_receipt/Receipt.png';
 import profileIcon from 'assets/ic_profile/Profile.png';
 import savedIcon from 'assets/ic_saved/Saved.png';
@@ -35,7 +37,7 @@ const TabIcon = (
   {icon, tintColor}, // eslint-disable-line
 ) => <Image source={icon} style={{tintColor}} />;
 
-const ProfileStack = createStackNavigator({Profile});
+const ProfileStack = createStackNavigator({Profile, SettingItemEdit});
 const HomeStack = createStackNavigator({Home});
 const UserStack = createStackNavigator({User});
 const SavedStack = createStackNavigator({Saved});

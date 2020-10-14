@@ -7,6 +7,7 @@ const SearchBar = ({term, setTerm}) => {
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
       <TextInput
+        clearButtonMode="while-editing"
         autoCapitalize="none"
         autoCorrect={false}
         style={styles.inputStyle}

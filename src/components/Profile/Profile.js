@@ -7,8 +7,9 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import ListButton from '../common/ListButton';
 import LoginButton from '../common/LoginButton';
-import styles from './styles';
+// import SettingItemEdit from '../common/SettingItemEdit';
 
+import styles from './styles';
 import strings from 'localization';
 import getData from 'selectors/DataSelectors';
 import HeaderStyles from 'helpers/HeaderStyles';
@@ -17,6 +18,7 @@ import TextStyles from 'helpers/TextStyles';
 import {logout} from 'actions/UserActions';
 import getUser from 'selectors/UserSelectors';
 import LocalizedStrings from 'react-native-localization';
+import navigation from 'components/navigation';
 
 function Profile(props) {
   const user = useSelector(state => getUser(state));
@@ -78,7 +80,11 @@ function Profile(props) {
     console.log(_renderSectionHeader);
     return (
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('SettingItemEdit');
+            console.log(item);
+          }}>
           <View style={styles.listButtonContainer}>
             <ListButton
               headerPrimary={item.info[0]}

@@ -37,17 +37,21 @@ import ReceiptsController from 'controllers/ReceiptsController';
 import dataReducer from 'reducers/DataReducer';
 
 const ReceiptModal = props => {
+  const item = useSelector(state => state.data.clickedReceipt);
+  console.log('MIOMEYOMIO');
+  console.log();
+
   const _renderItem = ({item}) => {
     return (
-      <View style={modalStyles.lineItems.item}>
-        <Text>PENNE ARRABBIATA</Text>
-        <Text>2.99</Text>
+      <View style={modalStyles.lineItems}>
+        <Text style={textStyles.lineItem}>{item.item}</Text>
+        <Text style={textStyles.lineItem}>{item.costPerItem}</Text>
       </View>
     );
   };
 
-  const item = useSelector(state => state.data.clickedReceipt);
   if (!item) return null;
+
   return (
     <Modal
       {...props}
@@ -55,9 +59,7 @@ const ReceiptModal = props => {
       deviceHeight={props.deviceHeight}
       isVisible={props.isVisible}
       onBackdropPress={props.onBackDropPress}>
-      <TouchableWithoutFeedback
-        // onPress={console.log('hello')}
-        style={modalStyles.touchable}>
+      <TouchableWithoutFeedback style={modalStyles.touchable}>
         <ScrollView>
           <View style={modalStyles.modalView}>
             <LoginButton
@@ -67,41 +69,33 @@ const ReceiptModal = props => {
             />
             <Text />
             <Text />
-            {/* <View style={modalStyles.modalView}> */}
-            <Text>{item.metadata.storeName}</Text>
+            <Text style={textStyles.header}>{item.metadata.storeName}</Text>
             <Text>{item.metadata.address}</Text>
-
-            <Text>Store # {item.metadata.phone}</Text>
+            <Text style={textStyles.subHeader}>
+              Store # {item.metadata.phone}
+            </Text>
             <Text />
-            <Text>{item.metadata.storeHours}</Text>
+            <Text style={textStyles.subHeader}>{item.metadata.storeHours}</Text>
             <Text />
-            {/* <FlatList data={} renderItem={_renderItem}/> */}
-            <View style={modalStyles.lineItems}>
-              <Text>{item.lineItems.item}</Text>
-              <Text>2.99</Text>
-            </View>
-            <View style={modalStyles.lineItems.item}>
-              <Text>PENNE ARRABBIATA</Text>
-              <Text>2.99</Text>
-            </View>
+            <FlatList
+              style={{alignSelf: 'stretch'}}
+              data={item.lineItems}
+              renderItem={_renderItem}
+            />
             <Text />
             <View style={modalStyles.lineItems}>
-              <Text>SUBTOTAL</Text>
-              <Text>$5.98</Text>
+              <Text style={textStyles.lineItem}>SUBTOTAL</Text>
+              <Text style={textStyles.lineItem}>${item.metadata.subTotal}</Text>
             </View>
             <View style={modalStyles.lineItems}>
-              <Text>STATE TAX</Text>
-              <Text>$0.07</Text>
+              <Text style={textStyles.lineItem}>STATE TAX</Text>
+              <Text style={textStyles.lineItem}>${item.metadata.tax}</Text>
             </View>
             <View style={modalStyles.lineItems}>
-              <Text>TOTAL</Text>
-              <Text>$6.05</Text>
+              <Text style={textStyles.lineItem}>TOTAL</Text>
+              <Text style={textStyles.lineItem}>${item.metadata.total}</Text>
             </View>
-
-            {/* </View> */}
           </View>
-          {/* </TouchableWithoutFeedback> */}
-          {/* </TouchableOpacity> */}
         </ScrollView>
       </TouchableWithoutFeedback>
       {/* </View> */}
@@ -110,30 +104,16 @@ const ReceiptModal = props => {
 };
 
 const modalStyles = StyleSheet.create({
-  centeredView: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // marginTop: 100,
-    // alignItems: 'center',
-    // marginTop: 100,
-    // backgroundColor: 'black',
-    // opacity: 0.5,
-  },
   modalContainer: {
     flex: 1,
     marginTop: 0,
     marginBottom: 0,
     borderRadius: 20,
-    // marginBottom: 200,
+
     marginHorizontal: 20,
-    // backgroundColor: 'black',
   },
   modalView: {
     flex: 1,
-    // margin:
-    // marginTop: 20,
-    // marginHorizontal: 30,
-    // marginBottom: 100,
     marginVertical: 20,
     backgroundColor: Colors.inputBackground,
     borderRadius: 20,
@@ -145,8 +125,8 @@ const modalStyles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    // shadowOpacity: 0.5,
-    // shadowRadius: 5,
+    shadowOpacity: 1,
+    shadowRadius: 5,
   },
 
   lineItems: {
@@ -154,13 +134,23 @@ const modalStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'stretch',
   },
-  touchable: {
-    // backgroundColor: 'black',
-    // marginVertical: 50,
-    // flex: 1,
-    // borderRadius: 20,
-    // flexGrow: 1,
-    // flex: 1,
+});
+
+const textStyles = StyleSheet.create({
+  header: {
+    fontSize: 16,
+    fontFamily: 'AvenirNext-Bold',
+    color: Colors.primaryText,
+  },
+  subHeader: {
+    fontSize: 11,
+    fontFamily: 'AvenirNext-Regular',
+    color: Colors.inputTextColor,
+  },
+  lineItem: {
+    fontSize: 14,
+    fontFamily: 'AvenirNext-Regular',
+    color: 'black',
   },
 });
 
