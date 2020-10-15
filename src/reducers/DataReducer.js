@@ -5,6 +5,7 @@ const initialState = {
   data: null,
   clickedReceipt: null,
   clickedBookmark: null,
+  clickedAccountInfo: null,
   item: null,
 };
 
@@ -27,8 +28,6 @@ const dataReducer = (state = initialState, action) => {
         clickedReceipt: action.item,
       };
     case actionTypes.CLICKED_BOOKMARK:
-      // console.log('====');
-      // console.log(state);
       return {
         ...state,
         clickedBookmark: action.item,
@@ -39,6 +38,11 @@ const dataReducer = (state = initialState, action) => {
           }
           return receipt;
         }),
+      };
+    case actionTypes.CLICKED_ACCOUNT_INFO:
+      return {
+        ...state,
+        clickedAccountInfo: action.item,
       };
     default:
       return state;

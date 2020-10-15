@@ -19,6 +19,7 @@ import {logout} from 'actions/UserActions';
 import getUser from 'selectors/UserSelectors';
 import LocalizedStrings from 'react-native-localization';
 import navigation from 'components/navigation';
+import {clickedAccountInfo, clickedReceipt} from 'actions/DataActions';
 
 function Profile(props) {
   const user = useSelector(state => getUser(state));
@@ -31,6 +32,11 @@ function Profile(props) {
         return {id, info: [bankName, lastFourDigits]};
       })
     : [{id: 0, info: ['', 0]}];
+
+  console.log('======');
+  console.log(cardData);
+  console.log(user);
+
   let sections = [
     {
       id: 0,
@@ -43,11 +49,23 @@ function Profile(props) {
       data: [
         {
           id: cardData.length + 0,
+          info: [
+            'Name',
+            user
+              ? user.metadata.name.first + ' ' + user.metadata.name.last
+              : '',
+          ],
+        },
+        {
+          id: cardData.length + 1,
           info: ['Email', user ? user.metadata.email : ''],
         },
-        {id: cardData.length + 1, info: ['Password', '**********']},
         {
           id: cardData.length + 2,
+          info: ['Password', user ? user.metadata.password : ''],
+        },
+        {
+          id: cardData.length + 3,
           info: ['Phone Number', user ? user.metadata.phoneNumber : ''],
         },
       ],
@@ -83,7 +101,8 @@ function Profile(props) {
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate('SettingItemEdit');
-            console.log(item);
+            dispatch(clickedAccountInfo(item));
+            // console.log(item);
           }}>
           <View style={styles.listButtonContainer}>
             <ListButton
@@ -106,7 +125,7 @@ function Profile(props) {
     // console.log(_renderSectionHeader.section.title);
     if (_renderSectionHeader.section.title === 'Card Information') {
       return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => dispatch(clickedReceipt)}>
           <View style={styles.addCardContainer}>
             <Feather
               style={{marginRight: 7}}

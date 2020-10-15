@@ -2,6 +2,7 @@
   "_id": "1234",
   "metadata": {
     "userName": "jJones",
+    "password": "aaa",
     "email": "JorgeJones@gmail.com",
     "name": {"first": "Jorge", "last": "Jones", "middle": null},
     "phoneNumber": "805-258-9999"
