@@ -125,7 +125,11 @@ function Profile(props) {
     // console.log(_renderSectionHeader.section.title);
     if (_renderSectionHeader.section.title === 'Card Information') {
       return (
-        <TouchableOpacity onPress={() => dispatch(clickedReceipt)}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Added Card');
+            dispatch(clickedReceipt);
+          }}>
           <View style={styles.addCardContainer}>
             <Feather
               style={{marginRight: 7}}

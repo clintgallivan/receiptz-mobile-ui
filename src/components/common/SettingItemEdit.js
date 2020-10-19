@@ -21,73 +21,86 @@ const SettingItemEdit = props => {
 
   const cardMapName = user.cards.map(({bankName, lastFourDigits}) => {
     return {
-      bankName: bankName,
-      lastFourDigits: lastFourDigits,
+      bankName,
+      lastFourDigits,
     };
   });
-
+  console.log(item.info);
+  console.log('[][][][][][]');
+  console.log(item);
   console.log(user);
   console.log(eachItem);
   console.log('[[][][][][]]');
   console.log(item.info[0]);
   console.log(item.info[1]);
   console.log(cardMapName);
+  console.log(cardMapName);
+  console.log(cardMapName[0].bankName, cardMapName[0].lastFourDigits);
+
+  // const jerry = () => {
+  //   if (item.info === )
+  // }
+
+  const _renderCardItemView = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.textInputHeader}>Bank</Text>
+        <TextInput
+          value={item.info[0]}
+          style={styles.accountTextInput}
+          clearButtonMode="while-editing" //! This is how the flatlist should render
+        />
+        <View style={styles.line} />
+        <Text style={styles.textInputHeader}>Last 4 Digits</Text>
+        <TextInput
+          value={item.info[1]}
+          // value={editItemValue}
+          style={styles.accountTextInput}
+          clearButtonMode="while-editing"
+        />
+        <View style={styles.line} />
+      </View>
+    );
+  };
+
+  const _renderAccountItemView = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.textInputHeader}>{item.info[0]}</Text>
+        <TextInput
+          // placeholder={item.info[0]}
+          value={item.info[1]}
+          style={styles.accountTextInput}
+          clearButtonMode="while-editing" //! This is how the flatlist should render
+        />
+        <View style={styles.line} />
+      </View>
+    );
+  };
 
   const _renderItem = () => {
-    // if (item.info[1] === user.metadata.phoneNumber) {
-    //   return (
-    //     <View>
-    //       <Text>Success</Text>
-    //     </View>
-    //   );
-    // } else {
-    //   return (
-    //     <View>
-    //       <Text>Fail</Text>
-    //     </View>
-    //   );
-    // }
-    // return item.info[1] === user.metadata.phoneNumber ? (
-    //   <View>
-    //     <Text>success</Text>
-    //   </View>
-    // ) : (
-    //   <View>
-    //     <Text>Fail</Text>
-    //   </View>
-    // );
-
     if (item.info[1] === user.metadata.phoneNumber) {
-      return (
-        <View>
-          <Text>phone number</Text>
-        </View>
-      );
+      return _renderAccountItemView();
     } else if (
       item.info[1] ===
       user.metadata.name.first + ' ' + user.metadata.name.last
     ) {
-      return (
-        <View>
-          <Text>Name</Text>
-        </View>
-      );
+      return _renderAccountItemView();
     } else if (item.info[1] == user.metadata.email) {
-      return (
-        <View>
-          <Text>Email</Text>
-        </View>
-      );
+      return _renderAccountItemView();
     } else if (item.info[1] == user.metadata.password) {
       return (
         <View>
           <Text>Password</Text>
         </View>
       );
+    } else {
+      return _renderCardItemView();
     }
   };
 
   return _renderItem();
+
   // <FlatList
   //   data={item}
   //   renderItem={_renderItem}
@@ -116,20 +129,44 @@ const styles = StyleSheet.create({
     flex: 1,
     // marginHorizontal: 31,
   },
-  textInput: {
+  accountTextInput: {
     // backgroundColor: 'blue',
     // marginHorizontal: 31,
     // marginTop: 20,
-    color: Colors.inputTextColor,
+    color: '#606060',
     fontSize: 14,
     marginHorizontal: 31,
-    paddingVertical: 18,
+    // paddingVertical: 18,
+    paddingBottom: 9,
+    paddingTop: 18,
+    // backgroundColor: 'yellow',
+  },
+  cardTextInput: {
+    // backgroundColor: 'blue',
+    // marginHorizontal: 31,
+    // marginTop: 20,
+    color: '#606060',
+    fontSize: 14,
+    marginHorizontal: 31,
+    // paddingVertical: 18,
+    paddingBottom: 9,
+    // backgroundColor: 'black',
+  },
+  textInputHeader: {
+    color: '#C4C4C4',
+    fontSize: 11,
+    fontFamily: 'AvenirNext-Regular',
+    marginHorizontal: 31,
+    // paddingVertical: 18,
+    paddingTop: 9,
+    marginBottom: -18,
   },
   line: {
     backgroundColor: Colors.gray,
     marginTop: 2,
     marginHorizontal: 31,
     height: 1,
+    fontFamily: 'AvenirNext-Regular',
     // flexDirection: 'column',
     alignSelf: 'stretch',
   },

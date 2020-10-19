@@ -8,10 +8,10 @@
     "phoneNumber": "805-258-9999"
   },
   "cards": [
-    {"bankName": "Bank of America", "lastFourDigits": 1234},
-    {"bankName": "Bank of America", "lastFourDigits": 1234},
-    {"bankName": "Bank of America", "lastFourDigits": 1234},
-    {"bankName": "Bank of America", "lastFourDigits": 1234}
+    {"bankName": "Bank of America", "lastFourDigits": "1234"},
+    {"bankName": "Bank of America", "lastFourDigits": "0000"},
+    {"bankName": "Bank of America", "lastFourDigits": "1111"},
+    {"bankName": "Bank of America", "lastFourDigits": "2222"}
   ],
   "receipts": [],
   "count": "100"
