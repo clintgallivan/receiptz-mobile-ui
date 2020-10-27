@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
+// import {useIsFocused} from '@react-navigation/native';
 import {View, Text, TouchableOpacity, SectionList} from 'react-native';
 import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
@@ -19,7 +20,12 @@ import {logout} from 'actions/UserActions';
 import getUser from 'selectors/UserSelectors';
 import LocalizedStrings from 'react-native-localization';
 import navigation from 'components/navigation';
-import {clickedAccountInfo, clickedReceipt} from 'actions/DataActions';
+import {
+  clickedAccountInfo,
+  clickedAddCards,
+  clickedReceipt,
+  resetAddCards,
+} from 'actions/DataActions';
 
 function Profile(props) {
   const user = useSelector(state => getUser(state));
@@ -36,6 +42,15 @@ function Profile(props) {
   console.log('======');
   console.log(cardData);
   console.log(user);
+
+  // const isFocused = useIsFocused();
+
+  // useEffect(() => {
+  //   console.log('ran');
+  //   if (isFocused) {
+  //     dispatch(resetAddCards());
+  //   }
+  // }, [isFocused]);
 
   let sections = [
     {
@@ -128,7 +143,8 @@ function Profile(props) {
         <TouchableOpacity
           onPress={() => {
             console.log('Added Card');
-            dispatch(clickedReceipt);
+            props.navigation.navigate('SettingItemEdit');
+            dispatch(clickedAddCards()); //! this sets to true upon click. Need to make it set to false upon leaving the screen.
           }}>
           <View style={styles.addCardContainer}>
             <Feather

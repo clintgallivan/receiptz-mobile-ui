@@ -15,31 +15,25 @@ const SettingItemEdit = props => {
   const user = useSelector(state => getUser(state));
   const [editItemValue, setEditItemValue] = useState('');
 
-  const eachItem = item.info.map(({item}) => {
-    return {item: item};
-  });
-
   const cardMapName = user.cards.map(({bankName, lastFourDigits}) => {
     return {
       bankName,
       lastFourDigits,
     };
   });
-  console.log(item.info);
-  console.log('[][][][][][]');
-  console.log(item);
-  console.log(user);
-  console.log(eachItem);
-  console.log('[[][][][][]]');
-  console.log(item.info[0]);
-  console.log(item.info[1]);
-  console.log(cardMapName);
-  console.log(cardMapName);
-  console.log(cardMapName[0].bankName, cardMapName[0].lastFourDigits);
+  // console.log(item.info);
+  // console.log('[][][][][][]');
+  // console.log(item);
+  // console.log(user);
+  // console.log(eachItem);
+  // console.log('[[][][][][]]');
+  // console.log(item.info[0]);
+  // console.log(item.info[1]);
+  // console.log(cardMapName);
+  // console.log(cardMapName);
+  // console.log(cardMapName[0].bankName, cardMapName[0].lastFourDigits);
 
-  // const jerry = () => {
-  //   if (item.info === )
-  // }
+  const addCard = useSelector(state => state.data.clickedAddCards);
 
   const _renderCardItemView = () => {
     return (
@@ -79,6 +73,14 @@ const SettingItemEdit = props => {
   };
 
   const _renderItem = () => {
+    console.log(addCard);
+    if (addCard === true) {
+      return (
+        <View>
+          <Text>ADD CARD</Text>
+        </View>
+      );
+    }
     if (item.info[1] === user.metadata.phoneNumber) {
       return _renderAccountItemView();
     } else if (

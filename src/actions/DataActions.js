@@ -9,6 +9,8 @@ export const actionTypes = {
   CLICKED_RECEIPT: 'CLICKED_RECEIPT',
   CLICKED_BOOKMARK: 'CLICKED_BOOKMARK',
   CLICKED_ACCOUNT_INFO: 'CLICKED_ACCOUNT_INFO',
+  CLICKED_ADD_CARDS: 'CLICKED_ADD_CARDS',
+  RESET_ADD_CARDS: 'RESET_ADD_CARDS',
 };
 
 const dataRequest = () => ({
@@ -46,6 +48,20 @@ export const clickedAccountInfo = item => {
   return {
     type: actionTypes.CLICKED_ACCOUNT_INFO,
     item,
+  };
+};
+
+export const clickedAddCards = () => {
+  console.log('clickedAddCards');
+
+  return {
+    type: actionTypes.CLICKED_ADD_CARDS,
+  };
+};
+
+export const resetAddCards = () => {
+  return {
+    type: actionTypes.RESET_ADD_CARDS,
   };
 };
 

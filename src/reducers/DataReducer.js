@@ -7,6 +7,9 @@ const initialState = {
   clickedBookmark: null,
   clickedAccountInfo: null,
   item: null,
+  clickedAddCards: {
+    button: ['Add Card'],
+  },
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -43,6 +46,16 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         clickedAccountInfo: action.item,
+      };
+    case actionTypes.CLICKED_ADD_CARDS:
+      return {
+        ...state,
+        clickedAddCards: true,
+      };
+    case actionTypes.RESET_ADD_CARDS:
+      return {
+        ...state,
+        clickedAddCards: false,
       };
     default:
       return state;
