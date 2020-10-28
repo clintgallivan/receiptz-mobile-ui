@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import {useSelector} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -7,13 +13,16 @@ import strings from 'localization';
 import Colors from '../../helpers/Colors';
 import HeaderStyles from 'helpers/HeaderStyles';
 import getUser from 'selectors/UserSelectors';
+import Feather from 'react-native-vector-icons/Feather';
 
 // import styles from 'helpers/TextStyles';
 
 const SettingItemEdit = props => {
   const item = useSelector(state => state.data.clickedAccountInfo);
   const user = useSelector(state => getUser(state));
-  const [editItemValue, setEditItemValue] = useState('');
+
+  const [firstValue, setFirstValue] = useState(item.info[1]);
+  const [secondValue, setSecondValue] = useState(item.info[0]);
 
   const cardMapName = user.cards.map(({bankName, lastFourDigits}) => {
     return {
@@ -40,14 +49,16 @@ const SettingItemEdit = props => {
       <View style={styles.container}>
         <Text style={styles.textInputHeader}>Bank</Text>
         <TextInput
-          value={item.info[0]}
+          value={secondValue}
+          onChangeText={setSecondValue}
           style={styles.accountTextInput}
           clearButtonMode="while-editing" //! This is how the flatlist should render
         />
         <View style={styles.line} />
         <Text style={styles.textInputHeader}>Last 4 Digits</Text>
         <TextInput
-          value={item.info[1]}
+          value={firstValue}
+          onChangeText={setFirstValue}
           // value={editItemValue}
           style={styles.accountTextInput}
           clearButtonMode="while-editing"
@@ -63,7 +74,8 @@ const SettingItemEdit = props => {
         <Text style={styles.textInputHeader}>{item.info[0]}</Text>
         <TextInput
           // placeholder={item.info[0]}
-          value={item.info[1]}
+          value={firstValue}
+          onChangeText={newText => setFirstValue(newText)}
           style={styles.accountTextInput}
           clearButtonMode="while-editing" //! This is how the flatlist should render
         />
@@ -174,17 +186,74 @@ const styles = StyleSheet.create({
   },
 });
 
-SettingItemEdit.navigationOptions = {
-  title: strings.settings,
-  headerBackTitle: strings.back,
-  headerBackTitleStyle: {
-    color: 'red',
+const navStyles = StyleSheet.create({
+  headerRight: {
+    color: '#41969F',
+    fontSize: 12,
   },
-  headerTitleStyle: {
-    color: Colors.primaryText,
-    fontFamily: 'AvenirNext-Bold',
+  headerLeft: {
+    color: Colors.inputTextColor,
+    fontSize: 12,
   },
-  headerStyle: HeaderStyles.appHeader,
+  headerLeftContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // backgroundColor: 'blue',
+    marginLeft: 20,
+    paddingHorizontal: 2,
+    paddingVertical: 5,
+  },
+  headerRightContainer: {
+    // flexDirection: 'row',
+    // backgroundColor: 'blue',
+    marginRight: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+});
+
+SettingItemEdit.navigationOptions = ({navigation}) => {
+  return {
+    title: strings.settings,
+    headerRight: () => (
+      <TouchableOpacity
+        style={navStyles.headerRightContainer}
+        onPress={() => navigation.pop()}>
+        <Text style={navStyles.headerRight}>Save</Text>
+      </TouchableOpacity>
+    ),
+    headerLeft: () => (
+      <TouchableOpacity
+        style={navStyles.headerLeftContainer}
+        onPress={() => navigation.pop()}>
+        <Feather name="arrow-left" size={20} color={Colors.inputTextColor} />
+        <Text style={navStyles.headerLeft}>Back</Text>
+      </TouchableOpacity>
+    ),
+    // headerRight: () => (
+    //   <View>
+    //     {/* <AntDesign name="arrowleft" size={30} /> */}
+    //     <Text>Save</Text>
+    //   </View>
+    // ),
+    // headerLeft: <Text>Back</Text>,
+  };
 };
+
+// SettingItemEdit.navigationOptions = {
+//   title: strings.settings,
+//   headerRight: <Text>Save</Text>,
+//   headerLeft: <Text>Go Backk</Text>,
+//   // headerRight: 'save',
+
+//   // headerBackTitleStyle: {
+//   //   color: 'red',
+//   // },
+//   headerTitleStyle: {
+//     color: Colors.primaryText,
+//     fontFamily: 'AvenirNext-Bold',
+//   },
+//   headerStyle: HeaderStyles.appHeader,
+// };
 
 export default SettingItemEdit;
