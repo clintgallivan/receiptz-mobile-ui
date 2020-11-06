@@ -98,12 +98,20 @@ function SignUp(props) {
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.createAccount}
         />
-        <LoginButton
+        {/* <LoginButton
           textStyle={{color: Colors.signupButton}}
           style={styles.login}
           onPress={() => props.navigation.push('Login')}
           title={strings.login}
-        />
+        /> */}
+        <TouchableOpacity
+          style={styles.textRow}
+          onPress={() => {
+            props.navigation.push('Login');
+          }}>
+          <Text style={styles.createAccount}>Already have an account? </Text>
+          <Text style={styles.createAccountBold}>Login</Text>
+        </TouchableOpacity>
         {/* <View style={styles.signup}>
           <TouchableOpacity>
             <Text

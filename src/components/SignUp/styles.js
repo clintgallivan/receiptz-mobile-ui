@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    // backgroundColor: Colors.white,
+    // backgroundColor: 'yellow',
   },
   formContainer: {
     alignSelf: 'stretch',
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
   signup: {
     alignSelf: 'stretch',
-    marginTop: 80,
+    marginTop: 20,
     alignItems: 'center',
     backgroundColor: Colors.signupButton,
     borderRadius: 4,
@@ -54,6 +55,29 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlignVertical: 'bottom',
     textDecorationLine: 'underline',
+  },
+  textRow: {
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginTop: 10,
+  },
+  textRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // backgroundColor: 'yellow',
+    alignSelf: 'stretch',
+    marginHorizontal: -10,
+  },
+  createAccountBold: {
+    color: Colors.primaryText,
+    fontFamily: 'AvenirNext-Bold',
+    fontSize: 11,
+  },
+  createAccount: {
+    color: Colors.primaryText,
+    fontFamily: 'AvenirNext-Regular',
+    fontSize: 11,
   },
 });
 

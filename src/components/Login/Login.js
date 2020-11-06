@@ -81,17 +81,32 @@ function Login(props) {
         {/* <LoginButton style={styles.login} /> */}
         <LoginButton
           style={styles.signup}
-          onPress={() => {
-            props.navigation.push('SignUp');
-          }}
-          title={strings.createAccount}
+          onPress={loginUser}
+          title={isLoading ? strings.loading : strings.login}
         />
-        <LoginButton
+        {/* <LoginButton
           textStyle={{color: Colors.signupButton}}
           style={styles.login}
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.login}
-        />
+        /> */}
+        <View style={styles.textRowContainer}>
+          <TouchableOpacity
+            style={styles.textRow}
+            onPress={() => {
+              props.navigation.navigate('Verify');
+            }}>
+            <Text style={styles.createAccount}>Forgot Password </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.textRow}
+            onPress={() => {
+              props.navigation.push('SignUp');
+            }}>
+            <Text style={styles.createAccount}>New User? </Text>
+            <Text style={styles.createAccountBold}>Create Account</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

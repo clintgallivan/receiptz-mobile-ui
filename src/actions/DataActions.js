@@ -1,5 +1,6 @@
 import ReceiptsController from '../controllers/ReceiptsController';
 import {State} from 'react-native-gesture-handler';
+import {useCallback} from 'react';
 
 export const actionTypes = {
   DATA: 'DATA',
@@ -8,7 +9,6 @@ export const actionTypes = {
   DATA_SUCCESS: 'DATA_SUCCESS',
   CLICKED_RECEIPT: 'CLICKED_RECEIPT',
   CLICKED_BOOKMARK: 'CLICKED_BOOKMARK',
-  CLICKED_ACCOUNT_INFO: 'CLICKED_ACCOUNT_INFO',
   CLICKED_ADD_CARDS: 'CLICKED_ADD_CARDS',
   RESET_ADD_CARDS: 'RESET_ADD_CARDS',
 };
@@ -38,15 +38,6 @@ export const clickedReceipt = item => {
 export const clickedBookmark = item => {
   return {
     type: actionTypes.CLICKED_BOOKMARK,
-    item,
-  };
-};
-
-export const clickedAccountInfo = item => {
-  console.log('clickedAccountInfo');
-  console.log(item.info[0]);
-  return {
-    type: actionTypes.CLICKED_ACCOUNT_INFO,
     item,
   };
 };

@@ -1,3 +1,4 @@
+import {modalStyles} from 'components/Home/styles';
 import {StyleSheet} from 'react-native';
 import Colors from '../helpers/Colors';
 
@@ -13,15 +14,16 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   fieldTitle: {
-    fontSize: 16,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '500',
     alignSelf: 'center',
+    fontFamily: 'AvenirNext-Regular',
     color: Colors.white,
   },
   error: {
     fontSize: 14,
     color: Colors.red,
-    fontFamily: 'AvenirNext-Bold',
+    fontFamily: 'AvenirNext-Regular',
   },
 });
 

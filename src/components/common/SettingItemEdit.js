@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -8,137 +8,97 @@ import {
 } from 'react-native';
 import {useSelector} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
+
+import AddCardViewFeature from '../common/AddCardViewFeature';
 
 import strings from 'localization';
 import Colors from '../../helpers/Colors';
 import HeaderStyles from 'helpers/HeaderStyles';
 import getUser from 'selectors/UserSelectors';
 import Feather from 'react-native-vector-icons/Feather';
+import {saveItemEdit, updateItemEdit} from 'actions/UserActions';
+// import styles from 'helpers/TextStyles';
 
 // import styles from 'helpers/TextStyles';
 
 const SettingItemEdit = props => {
-  const item = useSelector(state => state.data.clickedAccountInfo);
+  const item = useSelector(state => state.user.clickedCardInfo);
+  const dispatch = useDispatch();
   const user = useSelector(state => getUser(state));
 
-  const [firstValue, setFirstValue] = useState(item.info[1]);
-  const [secondValue, setSecondValue] = useState(item.info[0]);
+  const [firstValue, setFirstValue] = useState(item.primaryInput);
+  const [secondValue, setSecondValue] = useState(item.secondaryInput);
 
-  const cardMapName = user.cards.map(({bankName, lastFourDigits}) => {
-    return {
-      bankName,
-      lastFourDigits,
-    };
-  });
-  // console.log(item.info);
-  // console.log('[][][][][][]');
-  // console.log(item);
-  // console.log(user);
-  // console.log(eachItem);
-  // console.log('[[][][][][]]');
-  // console.log(item.info[0]);
-  // console.log(item.info[1]);
-  // console.log(cardMapName);
-  // console.log(cardMapName);
-  // console.log(cardMapName[0].bankName, cardMapName[0].lastFourDigits);
+  // const changedFirstValue = useCallback(value => setFirstValue(value), []);
+  const updateValueState = (fv, sv) => {
+    dispatch(updateItemEdit(fv, sv));
+  };
+  let cardDataLength = user.cards.length;
+  console.log({cardDataLength});
 
-  const addCard = useSelector(state => state.data.clickedAddCards);
+  // const firstPlaceHolderValue = item.id === cardDataLength ? 'Bank' : '';
 
-  const _renderCardItemView = () => {
+  // const secondPlaceHolderValue =
+  //   item.id === cardDataLength ? 'Last 4 Digits' : ['', ''];
+
+  const addCardPlaceholder =
+    item.id === cardDataLength ? ['Bank', 'Last 4 Digits'] : ['', ''];
+  // console.log(firstPlaceHolderValue.value);
+  // console.log(firstPlaceHolderValue);
+  // if (item.primaryHeader === 'Bank') {
+  if (item.id <= cardDataLength) {
     return (
       <View style={styles.container}>
-        <Text style={styles.textInputHeader}>Bank</Text>
+        <Text style={styles.textInputHeader}>{item.primaryHeader}</Text>
         <TextInput
-          value={secondValue}
-          onChangeText={setSecondValue}
+          placeholder={addCardPlaceholder[0]}
+          value={firstValue}
+          onChangeText={setFirstValue}
+          onChange={updateValueState(firstValue, secondValue)}
           style={styles.accountTextInput}
           clearButtonMode="while-editing" //! This is how the flatlist should render
         />
         <View style={styles.line} />
-        <Text style={styles.textInputHeader}>Last 4 Digits</Text>
+        <Text style={styles.textInputHeader}>{item.secondaryHeader}</Text>
         <TextInput
-          value={firstValue}
-          onChangeText={setFirstValue}
-          // value={editItemValue}
+          placeholder={addCardPlaceholder[1]}
+          value={secondValue}
+          onChangeText={setSecondValue}
+          onChange={updateValueState(firstValue, secondValue)}
           style={styles.accountTextInput}
           clearButtonMode="while-editing"
         />
         <View style={styles.line} />
+        <View style={styles.addCardContainer}>
+          <AddCardViewFeature />
+        </View>
       </View>
     );
-  };
-
-  const _renderAccountItemView = () => {
+  } else {
     return (
       <View style={styles.container}>
-        <Text style={styles.textInputHeader}>{item.info[0]}</Text>
+        <Text style={styles.textInputHeader}>{item.primaryHeader}</Text>
         <TextInput
-          // placeholder={item.info[0]}
-          value={firstValue}
-          onChangeText={newText => setFirstValue(newText)}
+          value={secondValue}
+          onChangeText={setSecondValue}
+          onChange={updateValueState(firstValue, secondValue)}
           style={styles.accountTextInput}
           clearButtonMode="while-editing" //! This is how the flatlist should render
         />
         <View style={styles.line} />
       </View>
     );
-  };
-
-  const _renderItem = () => {
-    console.log(addCard);
-    if (addCard === true) {
-      return (
-        <View>
-          <Text>ADD CARD</Text>
-        </View>
-      );
-    }
-    if (item.info[1] === user.metadata.phoneNumber) {
-      return _renderAccountItemView();
-    } else if (
-      item.info[1] ===
-      user.metadata.name.first + ' ' + user.metadata.name.last
-    ) {
-      return _renderAccountItemView();
-    } else if (item.info[1] == user.metadata.email) {
-      return _renderAccountItemView();
-    } else if (item.info[1] == user.metadata.password) {
-      return (
-        <View>
-          <Text>Password</Text>
-        </View>
-      );
-    } else {
-      return _renderCardItemView();
-    }
-  };
-
-  return _renderItem();
-
-  // <FlatList
-  //   data={item}
-  //   renderItem={_renderItem}
-  //   keyExtractor={item => item.metadata.id}
-  // />
-
-  // <View style={styles.container}>
-  //   <TextInput
-  //     placeholder={item.info[0]}
-  //     style={styles.textInput}
-  //     clearButtonMode="while-editing" //! This is how the flatlist should render
-  //   />
-  //   <View style={styles.line} />
-  //   <TextInput
-  //     placeholder={JSON.stringify(item.info[1])}
-  //     value={editItemValue}
-  //     style={styles.textInput}
-  //     clearButtonMode="while-editing"
-  //   />
-  //   <View style={styles.line} />
-  // </View>;
+  }
 };
 
 const styles = StyleSheet.create({
+  addCardContainer: {
+    marginTop: 40,
+    // backgroundColor: 'black',
+    justifyContent: 'flex-start',
+    flex: 1,
+  },
   container: {
     flex: 1,
     // marginHorizontal: 31,
@@ -212,16 +172,58 @@ const navStyles = StyleSheet.create({
   },
 });
 
-SettingItemEdit.navigationOptions = ({navigation}) => {
+const HeaderRight = props => {
+  const updateItem = useSelector(state => state.user.updateItemEdit);
+
+  const {navigation} = props;
+  const item = useSelector(state => state.data.clickedAccountInfo);
+  const user = useSelector(state => state.user.user);
+  const originalItem = useSelector(state => state.user.clickedCardInfoMatch);
+  const finalItem = useSelector(state => state.user.updatedUser);
+
+  // const someSelectorFn = useSelector(somSelectorFunction);
+  const dispatch = useDispatch();
+  const onPress = () => {
+    //* if state.data.clickeAccountInfo (item.info: {}) === state.user.user, then return state.data.updateItem
+    dispatch(saveItemEdit());
+    navigation.pop();
+    console.log('000000000');
+    console.log({updateItem});
+    console.log({userCards: user.cards});
+    console.log({originalItem});
+    console.log({finalItem});
+
+    // dispatch(saveItemEdit(updateItem));
+    // console.log('&&&&&');
+    // console.log(finalItem);
+    // console.log(updateItem);
+    // console.log(user.cards);
+    // navigation.pop();
+  };
+  return (
+    <TouchableOpacity style={navStyles.headerRightContainer} onPress={onPress}>
+      <Text style={navStyles.headerRight}>Save</Text>
+    </TouchableOpacity>
+  );
+};
+
+SettingItemEdit.navigationOptions = ({navigation, dispatch}) => {
   return {
     title: strings.settings,
-    headerRight: () => (
-      <TouchableOpacity
-        style={navStyles.headerRightContainer}
-        onPress={() => navigation.pop()}>
-        <Text style={navStyles.headerRight}>Save</Text>
-      </TouchableOpacity>
-    ),
+    headerTitleStyle: {
+      color: Colors.primaryText,
+      fontFamily: 'AvenirNext-Bold',
+    },
+    headerRight: () => <HeaderRight navigation={navigation} />,
+    // headerRight: () => (
+    //   <TouchableOpacity
+    //     style={navStyles.headerRightContainer}
+    //     onPress={() => {
+    //       console.log(navigation.getScreenProps());
+    //     }}>
+    //     <Text style={navStyles.headerRight}>Save</Text>
+    //   </TouchableOpacity>
+    // ),
     headerLeft: () => (
       <TouchableOpacity
         style={navStyles.headerLeftContainer}

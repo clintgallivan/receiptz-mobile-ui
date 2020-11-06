@@ -5,7 +5,6 @@ const initialState = {
   data: null,
   clickedReceipt: null,
   clickedBookmark: null,
-  clickedAccountInfo: null,
   item: null,
   clickedAddCards: {
     button: ['Add Card'],
@@ -41,11 +40,6 @@ const dataReducer = (state = initialState, action) => {
           }
           return receipt;
         }),
-      };
-    case actionTypes.CLICKED_ACCOUNT_INFO:
-      return {
-        ...state,
-        clickedAccountInfo: action.item,
       };
     case actionTypes.CLICKED_ADD_CARDS:
       return {

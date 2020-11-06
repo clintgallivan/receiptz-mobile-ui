@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     margin: 10,
     //paddingBottom: 30,
 
-    //position: "absolute",
+    //position: "absolute",-
   },
   userName: {
     fontSize: 24,

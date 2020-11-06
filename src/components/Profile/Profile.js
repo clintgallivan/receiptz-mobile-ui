@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 // import {useIsFocused} from '@react-navigation/native';
 import {View, Text, TouchableOpacity, SectionList} from 'react-native';
 import PropTypes from 'prop-types';
@@ -20,28 +20,46 @@ import {logout} from 'actions/UserActions';
 import getUser from 'selectors/UserSelectors';
 import LocalizedStrings from 'react-native-localization';
 import navigation from 'components/navigation';
+import {NavigationEvents} from 'react-navigation';
+import {clickedReceipt, resetAddCards} from 'actions/DataActions';
 import {
-  clickedAccountInfo,
   clickedAddCards,
-  clickedReceipt,
-  resetAddCards,
-} from 'actions/DataActions';
+  clickedAccountInfo,
+  clickedCardInfo,
+  clickedNameInfo,
+} from 'actions/UserActions';
 
 function Profile(props) {
   const user = useSelector(state => getUser(state));
   const dispatch = useDispatch();
   const logoutUser = useCallback(() => dispatch(logout()), [dispatch]);
 
+  const newItemState = useSelector(state => state.user.clickedCardInfo);
+
+  const [counter, setCounter] = useState(0);
+  console.log('JJJJJJJJ');
+  console.log(newItemState);
+  console.log(user);
+
+  let finalUser = user;
+  console.log('65656565');
+  console.log(finalUser);
+
   //TODO find out how to remove user w/out throwing error
   let cardData = user
     ? user.cards.map(({bankName, lastFourDigits}, id) => {
-        return {id, info: [bankName, lastFourDigits]};
+        return {
+          header: 'Bank',
+          header2: 'Last 4 Digits',
+          id,
+          info: [bankName, lastFourDigits],
+        };
       })
     : [{id: 0, info: ['', 0]}];
 
-  console.log('======');
-  console.log(cardData);
-  console.log(user);
+  // console.log('======');
+  // console.log(cardData);
+  // console.log(user);
 
   // const isFocused = useIsFocused();
 
@@ -63,7 +81,8 @@ function Profile(props) {
       title: 'Account Information',
       data: [
         {
-          id: cardData.length + 0,
+          id: cardData.length + 1,
+          header: 'Name',
           info: [
             'Name',
             user
@@ -72,15 +91,18 @@ function Profile(props) {
           ],
         },
         {
-          id: cardData.length + 1,
+          id: cardData.length + 2,
+          header: 'Email',
           info: ['Email', user ? user.metadata.email : ''],
         },
         {
-          id: cardData.length + 2,
+          id: cardData.length + 3,
+          header: 'Password',
           info: ['Password', user ? user.metadata.password : ''],
         },
         {
-          id: cardData.length + 3,
+          id: cardData.length + 4,
+          header: 'Phone Number',
           info: ['Phone Number', user ? user.metadata.phoneNumber : ''],
         },
       ],
@@ -110,14 +132,14 @@ function Profile(props) {
   const sqrProfImg = deriveSqrProfImg(90);
 
   const _renderItem = ({item}) => {
-    console.log(_renderSectionHeader);
     return (
       <View>
         <TouchableOpacity
           onPress={() => {
-            props.navigation.navigate('SettingItemEdit');
-            dispatch(clickedAccountInfo(item));
-            // console.log(item);
+            return (
+              dispatch(clickedCardInfo(item)),
+              props.navigation.navigate('SettingItemEdit')
+            );
           }}>
           <View style={styles.listButtonContainer}>
             <ListButton
@@ -143,8 +165,15 @@ function Profile(props) {
         <TouchableOpacity
           onPress={() => {
             console.log('Added Card');
+            dispatch(
+              clickedCardInfo({
+                id: cardData.length + 0,
+                header: '',
+                header2: '',
+                info: ['', ''],
+              }),
+            ); //! this sets to true upon click. Need to make it set to false upon leaving the screen.
             props.navigation.navigate('SettingItemEdit');
-            dispatch(clickedAddCards()); //! this sets to true upon click. Need to make it set to false upon leaving the screen.
           }}>
           <View style={styles.addCardContainer}>
             <Feather
@@ -189,6 +218,13 @@ function Profile(props) {
 
   return (
     <View style={styles.container}>
+      <NavigationEvents
+        onWillFocus={() => {
+          console.log('focused on profile screen');
+          console.log(user);
+          setCounter(counter + 1);
+        }}
+      />
       <View style={styles.profileHeader}>
         <Svg
           viewBox={`-0 -0 ${sqrProfImg.d} ${sqrProfImg.d}`}
@@ -213,7 +249,7 @@ function Profile(props) {
             {user
               ? `${user.metadata.name.first.charAt(
                   0,
-                )}${user.metadata.name.last.charAt(0)}`
+                )}${user.metadata.name.last.charAt(0)}` //! may need some ternary in case this object returns null.
               : ''}
           </SVGText>
           <Circle
@@ -247,7 +283,7 @@ function Profile(props) {
         <Text style={styles.userName}>
           {user ? `${user.metadata.name.first} ${user.metadata.name.last}` : ''}
         </Text>
-        <Text style={styles.subUserName}>SAVING RECEIPTS SINCE 2017</Text>
+        <Text style={styles.subUserName}>SAVING RECEIPTS SINCE 2020</Text>
         {/* change 2017 to populated date */}
         {/* <View style={styles.displayName}> //* Logout Button -- relocate
           <TouchableOpacity onPress={logoutUser}>
