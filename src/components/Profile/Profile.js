@@ -252,30 +252,30 @@ function Profile(props) {
                 )}${user.metadata.name.last.charAt(0)}` //! may need some ternary in case this object returns null.
               : ''}
           </SVGText>
-          <Circle
+          {/* <Circle
             onPress={() => console.log('button pressed')}
             fill={Colors.primaryText} //todo change colors based on click
             fillOpacity={0.25}
             cx={sqrProfImg.cPlus}
             cy={sqrProfImg.cPlus}
             r={sqrProfImg.rPlus}
-          />
-          <Path
+          /> */}
+          {/* <Path
             strokeWidth={2}
             fill="transparent"
             stroke={Colors.white}
             fillOpacity={1}
             strokeOpacity={1}
             d={sqrProfImg.dV}
-          />
-          <Path
+          /> */}
+          {/* <Path
             strokeWidth={2}
             fill="transparent"
             stroke={Colors.white}
             fillOpacity={1}
             strokeOpacity={1}
             d={sqrProfImg.dH}
-          />
+          /> */}
         </Svg>
       </View>
 
