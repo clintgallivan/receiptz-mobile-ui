@@ -6,8 +6,24 @@ import {vw, vh} from 'react-native-viewport-units';
 import YellowButton from '../common/YellowButton';
 import Swiper from 'react-native-swiper';
 // import {createAppContainer} from 'react-navigation';
+import Geolocation from '@react-native-community/geolocation';
+import TwoButtonAlert from './TwoButtonAlert.js';
 
 const Onboarding = ({navigation}) => {
+  const findCoordinates = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        TwoButtonAlert();
+        // const result = JSON.stringify(position);
+        // const latitude = JSON.stringify(position.coords.latitude);
+        // const longitude = JSON.stringify(position.coords.longitude);
+      },
+      // (error) => Alert.alert('yo'),
+      error => TwoButtonAlert(),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+    );
+  };
+
   return (
     <View style={styles.background}>
       <Swiper
@@ -70,7 +86,10 @@ const Onboarding = ({navigation}) => {
         </View>
       </Swiper>
       <YellowButton
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => {
+          navigation.navigate('Login');
+          findCoordinates();
+        }}
         text={"Let's Get Started"}
       />
     </View>

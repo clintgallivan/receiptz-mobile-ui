@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ReceiptzMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReceiptzMobileTests.m */; };
 		09AE4BEF5A93D8414D670706 /* libPods-ReceiptzMobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B3BBDD4B1F08AE92C17D9E /* libPods-ReceiptzMobile-tvOSTests.a */; };
@@ -19,6 +20,7 @@
 		4658F25AC44E6F435630C6F9 /* libPods-ReceiptzMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 246A79694D014D679D80147C /* libPods-ReceiptzMobileTests.a */; };
 		639C4F14DC9DF777C1DF554D /* libPods-ReceiptzMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A84668B7640F339899217E /* libPods-ReceiptzMobile.a */; };
 		7BF64FCF5F90010994FD6098 /* libPods-ReceiptzMobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF00D483387F561566FD4C78 /* libPods-ReceiptzMobile-tvOS.a */; };
+		C01EEC1925BA5536006D50C4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C01EEC1825BA5536006D50C4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		9074106BEE654EAB8AE6EE9D /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		A9A84668B7640F339899217E /* libPods-ReceiptzMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReceiptzMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67BF5253E5C4A7C95684349 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		C01EEC1825BA5536006D50C4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C0D339CA8C704C51B0C2B18A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		D32425C92DC048C0B5BA4775 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		DED8DB7B01C9D6EC09DD9827 /* Pods-ReceiptzMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReceiptzMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ReceiptzMobile-tvOS/Pods-ReceiptzMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C01EEC1825BA5536006D50C4 /* Settings.bundle */,
 				13B07FAE1A68108700A75B9A /* ReceiptzMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ReceiptzMobileTests */,
@@ -384,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C01EEC1925BA5536006D50C4 /* Settings.bundle in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

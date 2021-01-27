@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import Navigation from './components/navigation';
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function App() {
+const App = () => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -36,4 +36,6 @@ export default function App() {
   );
 
   return ready ? loaded : loading;
-}
+};
+
+export default App;
