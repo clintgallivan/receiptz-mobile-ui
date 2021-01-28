@@ -88,26 +88,142 @@ For further explaining on the decisions made on this template, as well as on how
 
 ## merchants partner with our company
 
-Merchants give us the ability to see their transaction data.
+Merchants give us the ability to view and utilize their transaction data.
 
-Specifically, we get to see:
+We speak to merchant's who use the square platform. If they decide to partner with us, we go through the process of obtaining an [OAuth Token](https://developer.squareup.com/docs/oauth-api/overview) from the merchant. OAuth tokens are one time use tokens, that expire after a finite amount of time (a few minutes).
 
-(JSON HERE - example of the data we receive)
+After we have partnered with a merchant, we now have the ability to make API requests to the [square merchant api](https://developer.squareup.com/us/en). Through those requests, we will be able to request data from Square, on behalf of the merchant.
+
+## The API Calling Process - Brokendown
+
+The quare [API Explorer](https://developer.squareup.com/explorer/square) is a great resource to show you all the endpoints of data we can potentially access. All the API requests are made on an intermittent basis. How often? TBD.
+
+### Step 1 - Make an API call to /locations/List Locations
+
+The object returned will look like this:
 
 ```
-"card": {
-  "id": "ccof:uFfUBcvleXzBHXiO3GB",
-  "card_brand": "VISA",
-  "last_4": "5858",
-  "exp_month": 5,
-  "exp_year": 2022,
-  "cardholder_name": "John Doe",
-  "billing_address": {
-    "address_line_1": "123 Main Street",
-    "locality": "San Francisco",
-    "administrative_district_level_1": "CA",
-    "postal_code": "94103",
-    "country": "US"
-  }
+
+{
+  "locations": [
+    {
+      "id": "4PY5QGHZJAD79",
+      "name": "My Business",
+      "address": {
+        "address_line_1": "15 Sequero",
+        "locality": "Rancho Santa Margarita",
+        "administrative_district_level_1": "CA",
+        "postal_code": "92688",
+        "country": "US"
+      },
+      "timezone": "America/Los_Angeles",
+      "capabilities": [
+        "CREDIT_CARD_PROCESSING"
+      ],
+      "status": "ACTIVE",
+      "created_at": "2019-12-11T04:58:54Z",
+      "merchant_id": "RN6MTMDPFE3AB",
+      "country": "US",
+      "language_code": "en-US",
+      "currency": "USD",
+      "phone_number": "+1 949-842-7141",
+      "business_name": "My Business",
+      "type": "PHYSICAL",
+      "business_hours": {},
+      "business_email": "clintg94@gmail.com",
+      "coordinates": {
+        "latitude": 33.620689,
+        "longitude": -117.621468
+      },
+      "mcc": "5814"
+    }
+  ]
 }
+
+```
+
+### Step 2 - Make an API call to /Transactions/ List Transactions
+
+We make this API call, using the `location_id` parameter. For each `location_ID` that was returned in the previous api call, we will make an API request.
+
+Through this process, we will be returned an object that looks like this:
+
+```
+{
+  "transactions": [
+    {
+      "id": "uYfnA2eWQ16nARUBNCWiitoeV",
+      "location_id": "4PY5QGHZJAD79",
+      "created_at": "2020-01-30T07:53:27Z",
+      "tenders": [
+        {
+          "id": "XrwIMUDOtg8EjczBYtst1wv9vaB",
+          "location_id": "4PY5QGHZJAD79",
+          "transaction_id": "uYfnA2eWQ16nARUBNCWiitoeV",
+          "created_at": "2020-01-30T07:53:21Z",
+          "amount_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "processing_fee_money": {
+            "amount": 19,
+            "currency": "USD"
+          },
+          "customer_id": "DVTQ0NFKPH7ZFFAXQ8PMDEPFH8",
+          "type": "CARD",
+          "card_details": {
+            "status": "CAPTURED",
+            "card": {
+              "card_brand": "MASTERCARD",
+              "last_4": "0456",
+              "fingerprint": "sq-1-BIU6TBHmPTXkT9sLQpW2W6i513iLLeehcRoeYQYUR-L5qqjQFQ0hz7AETeo3qA1cLw"
+            },
+            "entry_method": "KEYED"
+          }
+        }
+      ],
+      "refunds": [
+        {
+          "id": "SKxcqidgnrbJNCPzYpA6S",
+          "location_id": "4PY5QGHZJAD79",
+          "transaction_id": "uYfnA2eWQ16nARUBNCWiitoeV",
+          "tender_id": "XrwIMUDOtg8EjczBYtst1wv9vaB",
+          "created_at": "2020-01-30T07:59:44Z",
+          "reason": "Accidental Charge",
+          "amount_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "status": "APPROVED",
+          "processing_fee_money": {
+            "amount": 19,
+            "currency": "USD"
+          }
+        }
+      ],
+      "product": "REGISTER",
+      "client_id": "4B38BD50-32E2-4EE3-A56B-BA15F11362BB"
+    }
+```
+
+With this information we will be using the
+
+```
+
+"card": {
+"id": "ccof:uFfUBcvleXzBHXiO3GB",
+"card_brand": "VISA",
+"last_4": "5858",
+"exp_month": 5,
+"exp_year": 2022,
+"cardholder_name": "John Doe",
+"billing_address": {
+"address_line_1": "123 Main Street",
+"locality": "San Francisco",
+"administrative_district_level_1": "CA",
+"postal_code": "94103",
+"country": "US"
+}
+}
+
 ```
