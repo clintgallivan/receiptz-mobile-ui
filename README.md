@@ -94,4 +94,20 @@ Specifically, we get to see:
 
 (JSON HERE - example of the data we receive)
 
-`"card": { "id": "ccof:uFfUBcvleXzBHXiO3GB", "card_brand": "VISA", "last_4": "5858", "exp_month": 5, "exp_year": 2022, "cardholder_name": "John Doe", "billing_address": { "address_line_1": "123 Main Street", "locality": "San Francisco", "administrative_district_level_1": "CA", "postal_code": "94103", "country": "US" } }`
+```
+"card": {
+  "id": "ccof:uFfUBcvleXzBHXiO3GB",
+  "card_brand": "VISA",
+  "last_4": "5858",
+  "exp_month": 5,
+  "exp_year": 2022,
+  "cardholder_name": "John Doe",
+  "billing_address": {
+    "address_line_1": "123 Main Street",
+    "locality": "San Francisco",
+    "administrative_district_level_1": "CA",
+    "postal_code": "94103",
+    "country": "US"
+  }
+}
+```
