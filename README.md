@@ -86,17 +86,19 @@ For further explaining on the decisions made on this template, as well as on how
 
 # How Receiptz App Works
 
-## merchants partner with our company
+## Merchants Partner With Our Company
 
 Merchants give us the ability to view and utilize their transaction data.
 
 We speak to merchant's who use the square platform. If they decide to partner with us, we go through the process of obtaining an [OAuth Token](https://developer.squareup.com/docs/oauth-api/overview) from the merchant. OAuth tokens are one time use tokens, that expire after a finite amount of time (a few minutes).
 
+Oauth tokens allow us to make API requests to that merchant's data endpoint segments (with restictions to be set by merchant).
+
 After we have partnered with a merchant, we now have the ability to make API requests to the [square merchant api](https://developer.squareup.com/us/en). Through those requests, we will be able to request data from Square, on behalf of the merchant.
 
 ## The API Calling Process - Brokendown
 
-The quare [API Explorer](https://developer.squareup.com/explorer/square) is a great resource to show you all the endpoints of data we can potentially access. All the API requests are made on an intermittent basis. How often? TBD.
+The Square [API Explorer](https://developer.squareup.com/explorer/square) is a great resource to show you all the endpoints of data we can potentially access. All the API requests are made on an intermittent basis. How often? TBD.
 
 # Method 1
 
@@ -334,11 +336,11 @@ This is an example of the object recieved when calling this API endpoint (you ca
 }
 ```
 
-## Other potential data endpoints to utilize
+## Other Potential Data Endpoints to Utilize
 
 There are other potential endpoints to utilize that may offer valuable information to use for the App.
 
-### Potential Endpoint - Make an API call to Locations/List Locations
+### Potential Endpoint 1 - Make an API call to Locations/List Locations
 
 The object returned will look like this:
 
@@ -447,3 +449,9 @@ Through this process, we will be returned an object that looks like this:
   ]
 }
 ```
+
+## Sending Data to The User Backend
+
+Once we have received a new flow of data on an intermittent basis, we will then repopulate our database with new receiptz from those transactions.
+
+Through this process, the user will have an updated client user interface, showing a complete list of their receiptz.
