@@ -1,4 +1,4 @@
-# React-Native-Template
+<!-- # React-Native-Template
 
 The goal of this project is to work as template for react-native applications, providing a base project structure, core dependencies and boilerplate to jumpstart development.
 
@@ -82,7 +82,7 @@ This are some posts/guides that explain some things that we use inside the proje
 
 - [React-Native-Navigation and Redux](https://medium.com/react-native-training/explanation-of-react-native-navigation-wix-with-redux-deabcee8edfc).
 
-For further explaining on the decisions made on this template, as well as on how to use it, please refer to the [full tutorial](./docs/Tutorial.pdf)
+For further explaining on the decisions made on this template, as well as on how to use it, please refer to the [full tutorial](./docs/Tutorial.pdf) -->
 
 # How Receiptz App Works
 
