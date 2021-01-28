@@ -98,7 +98,247 @@ After we have partnered with a merchant, we now have the ability to make API req
 
 The quare [API Explorer](https://developer.squareup.com/explorer/square) is a great resource to show you all the endpoints of data we can potentially access. All the API requests are made on an intermittent basis. How often? TBD.
 
-### Step 1 - Make an API call to /locations/List Locations
+# Method 1
+
+### Step 1 - Make an API call to Payments/List Payments
+
+Once we make an API call to this API endpoint, we will receive an object of data, which shows every payment for a merchant (which we will request a time period for - since previous intermittent API request).
+
+```
+{
+  "payments": [
+    {
+      "id": "XrwIMUDOtg8EjczBYtst1wv9vaB",
+      "created_at": "2020-01-30T07:53:22.139Z",
+      "updated_at": "2020-01-30T08:13:21.589Z",
+      "amount_money": {
+        "amount": 100,
+        "currency": "USD"
+      },
+      "refunded_money": {
+        "amount": 100,
+        "currency": "USD"
+      },
+      "status": "COMPLETED",
+      "source_type": "CARD",
+      "card_details": {
+        "status": "CAPTURED",
+        "card": {
+          "card_brand": "MASTERCARD",
+          "last_4": "0456",
+          "exp_month": 8,
+          "exp_year": 2022,
+          "fingerprint": "sq-1-BIU6TBHmPTXkT9sLQpW2W6i513iLLeehcRoeYQYUR-L5qqjQFQ0hz7AETeo3qA1cLw",
+          "card_type": "CREDIT",
+          "prepaid_type": "NOT_PREPAID",
+          "bin": "519955"
+        },
+        "entry_method": "KEYED",
+        "cvv_status": "CVV_ACCEPTED",
+        "avs_status": "AVS_ACCEPTED",
+        "auth_result_code": "09674Z",
+        "statement_description": "SQ *MY BUSINESS",
+        "device_details": {
+          "device_id": "DEVICE_INSTALLATION_ID:D8539D19-1585-492F-8C0E-949C886C0581",
+          "device_name": "Clinton",
+          "device_installation_id": "D8539D19-1585-492F-8C0E-949C886C0581"
+        }
+      },
+      "location_id": "4PY5QGHZJAD79",
+      "order_id": "uYfnA2eWQ16nARUBNCWiitoeV",
+      "refund_ids": [
+        "XrwIMUDOtg8EjczBYtst1wv9vaB_SKxcqidgnrbJNCPzYpA6S"
+      ],
+      "processing_fee": [
+        {
+          "effective_at": "2020-01-30T09:53:29.000Z",
+          "type": "INITIAL",
+          "amount_money": {
+            "amount": 19,
+            "currency": "USD"
+          }
+        }
+      ],
+      "total_money": {
+        "amount": 100,
+        "currency": "USD"
+      },
+      "receipt_number": "XrwI",
+      "receipt_url": "https://squareup.com/receipt/preview/XrwIMUDOtg8EjczBYtst1wv9vaB"
+    },
+```
+
+With this data, we will be utilizing the "card" object of a specific payment:
+
+```
+"card": {
+  "card_brand": "MASTERCARD",
+  "last_4": "0456",
+  "exp_month": 8,
+  "exp_year": 2022,
+  "fingerprint": "sq-1-BIU6TBHmPTXkT9sLQpW2W6i513iLLeehcRoeYQYUR-L5qqjQFQ0hz7AETeo3qA1cLw",
+  "card_type": "CREDIT",
+  "prepaid_type": "NOT_PREPAID",
+  "bin": "519955"
+},
+```
+
+For each of the payment objects, We will compare the `card_brand`, `last_4`, `exp_month`, and `exp_year`, with our internal user data. If there are any matches in our cross-checking, we will use the key `receipt_url` and pull up the associated [value(link)](https://squareup.com/receipt/preview/XrwIMUDOtg8EjczBYtst1wv9vaB) to observe and capture the receipt data.
+
+# Method 2
+
+### Step 1 - Do exactly what we did previously in Method 1.
+
+### Step 2 - Make an API call to Orders/Batch retrive orders
+
+By taking the `order_id` from the previous object in Step 1, we will be able to make the API call, and receive an object with all the orders we are requesting. Each order received will contain the information associated with any standard receipt.
+
+This is an example of the object recieved when calling this API endpoint (you can compare this with the [link](https://squareup.com/receipt/preview/XrwIMUDOtg8EjczBYtst1wv9vaB) mentioned in Method 1):
+
+```
+{
+  "orders": [
+    {
+      "id": "uYfnA2eWQ16nARUBNCWiitoeV",
+      "location_id": "4PY5QGHZJAD79",
+      "line_items": [
+        {
+          "uid": "B371D686-A178-49C8-B150-4D6DB7E76732",
+          "catalog_object_id": "2OAJDOQIQKXMKVM6EM66TMHA",
+          "quantity": "1",
+          "name": "Espresso ",
+          "variation_name": "Regular",
+          "base_price_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "gross_sales_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "total_tax_money": {
+            "amount": 0,
+            "currency": "USD"
+          },
+          "total_discount_money": {
+            "amount": 0,
+            "currency": "USD"
+          },
+          "total_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "variation_total_price_money": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        }
+      ],
+      "created_at": "2020-01-30T07:53:27Z",
+      "updated_at": "2020-01-30T07:53:27Z",
+      "state": "COMPLETED",
+      "total_tax_money": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "total_discount_money": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "total_tip_money": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "total_money": {
+        "amount": 100,
+        "currency": "USD"
+      },
+      "closed_at": "2020-01-30T07:53:27Z",
+      "tenders": [
+        {
+          "id": "XrwIMUDOtg8EjczBYtst1wv9vaB",
+          "location_id": "4PY5QGHZJAD79",
+          "transaction_id": "uYfnA2eWQ16nARUBNCWiitoeV",
+          "created_at": "2020-01-30T07:53:21Z",
+          "amount_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "processing_fee_money": {
+            "amount": 19,
+            "currency": "USD"
+          },
+          "customer_id": "DVTQ0NFKPH7ZFFAXQ8PMDEPFH8",
+          "type": "CARD",
+          "card_details": {
+            "status": "CAPTURED",
+            "card": {
+              "card_brand": "MASTERCARD",
+              "last_4": "0456",
+              "fingerprint": "sq-1-BIU6TBHmPTXkT9sLQpW2W6i513iLLeehcRoeYQYUR-L5qqjQFQ0hz7AETeo3qA1cLw"
+            },
+            "entry_method": "KEYED"
+          }
+        }
+      ],
+      "total_service_charge_money": {
+        "amount": 0,
+        "currency": "USD"
+      },
+      "return_amounts": {
+        "total_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "tax_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "discount_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "tip_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        }
+      },
+      "net_amounts": {
+        "total_money": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "tax_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "discount_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "tip_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        }
+      }
+    }
+  ]
+}
+```
+
+## Other potential data endpoints to utilize
+
+There are other potential endpoints to utilize that may offer valuable information to use for the App.
+
+### Potential Endpoint - Make an API call to Locations/List Locations
 
 The object returned will look like this:
 
@@ -142,9 +382,9 @@ The object returned will look like this:
 
 ```
 
-### Step 2 - Make an API call to /Transactions/ List Transactions
+### Potential Endpoint 2 - Make an API call to Transactions/List Transactions
 
-We make this API call, using the `location_id` parameter. For each `location_ID` that was returned in the previous api call, we will make an API request.
+We make this API call, using the `location_id` parameter. For each `location_ID` that was returned in the previous api call, we will make an API request to retrive transactions for a specific period (since the last API Transaction/List Transaction request).
 
 Through this process, we will be returned an object that looks like this:
 
@@ -204,26 +444,6 @@ Through this process, we will be returned an object that looks like this:
       "product": "REGISTER",
       "client_id": "4B38BD50-32E2-4EE3-A56B-BA15F11362BB"
     }
-```
-
-With this information we will be using the
-
-```
-
-"card": {
-"id": "ccof:uFfUBcvleXzBHXiO3GB",
-"card_brand": "VISA",
-"last_4": "5858",
-"exp_month": 5,
-"exp_year": 2022,
-"cardholder_name": "John Doe",
-"billing_address": {
-"address_line_1": "123 Main Street",
-"locality": "San Francisco",
-"administrative_district_level_1": "CA",
-"postal_code": "94103",
-"country": "US"
+  ]
 }
-}
-
 ```
