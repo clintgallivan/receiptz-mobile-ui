@@ -51,8 +51,22 @@ Type into the Production Redirect URL section: http://receiptzapp.com. Then clic
 
 ![Oauth5](./assets/Oauth5.png)
 
-### Step 6 - Create an Authorization Code, and set permissions.
+### Step 6 - Create an Authorization Code and set permissions.
 
-In order to create the Oauth token we need an Authorization Code first. In order to that, you will open up another browser and type the below into the
+#### Part 1
 
-`https://connect.squareup.com/oauth2/authorize?client_id={APPLICATION_ID}=MERCHANT_PROFILE_READ+PAYMENTS_READ+CUSTOMERS_READ+ORDERS_READ`
+In order to create the Oauth token we need an Authorization Code first. In order to create an Authorization Code, the merchant will open up another browser and type the URL into the browser.
+
+`https://connect.squareup.com/oauth2/authorize?client_id={APPLICATION_ID}&scope=MERCHANT_PROFILE_READ+PAYMENTS_READ+CUSTOMERS_READ+ORDERS_READ`
+
+The part that says `{APPLICATION_ID}` is going to be replaced with the ReceiptzApp application id. You can find that on the Oauth page in the picture above, labeled under `"Production Application ID"`, directly under `"Production Redirect URL"`.
+
+The part of the url that says `MERCHANT_PROFILE_READ+PAYMENTS_READ+CUSTOMERS_READ+ORDERS_READ` is the set of permissions we will be accessing from the merchant data. We need to be have those permissions enabled for this Receiptz to work.
+
+#### Part 2
+
+Now that you just went to the webpage above, take a look at the URL. You should see something like this:
+
+`https://receiptzapp.com/?code=sq0cgp-acwU1y8hUJpd2YuCBQ_fjw&response_type=code#_=_`
+
+Keep this on hand! The part of the URL to the right of `https://receiptzapp.com/?code=` and to the left of `&response_type=code#_=_` is the authorization token.
