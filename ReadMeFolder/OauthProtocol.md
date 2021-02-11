@@ -23,6 +23,6 @@ With this object, we will cross check this information, with information about o
 
 Have the merchant sign into their [square developer portal](https://squareup.com/login?app=developer&return_to=https://developer.squareup.com/apps) by using their merchant login credentials.
 
-![Oauth1](Oauth1.png)
+![Oauth1](./assets/Oauth1.png)
 
 ### Step 2 - The Merchant should add an Application called "ReceiptzApp"
