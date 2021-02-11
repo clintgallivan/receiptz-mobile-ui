@@ -51,4 +51,8 @@ Type into the Production Redirect URL section: http://receiptzapp.com. Then clic
 
 ![Oauth5](./assets/Oauth5.png)
 
-### Step 6
+### Step 6 - Create an Authorization Code, and set permissions.
+
+In order to create the Oauth token we need an Authorization Code first. In order to that, you will open up another browser and fill in the below information:
+
+https://connect.squareup.com/oauth2/authorize?client_id={`APPLICATION_ID`}=MERCHANT_PROFILE_READ+PAYMENTS_READ+CUSTOMERS_READ+ORDERS_READ
