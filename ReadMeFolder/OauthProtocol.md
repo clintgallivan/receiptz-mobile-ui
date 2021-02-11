@@ -65,8 +65,51 @@ The part of the url that says `MERCHANT_PROFILE_READ+PAYMENTS_READ+CUSTOMERS_REA
 
 #### Part 2
 
-Now that you just went to the webpage above, take a look at the URL. You should see something like this:
+Now that the merchant just went to the webpage above, take a look at the URL. You should see something like this:
 
 `https://receiptzapp.com/?code=sq0cgp-acwU1y8hUJpd2YuCBQ_fjw&response_type=code#_=_`
 
 Keep this on hand! The part of the URL to the right of `https://receiptzapp.com/?code=` and to the left of `&response_type=code#_=_` is the authorization token.
+
+### Step 7 - use the Authrization Code, client_id, and client_secret to create a refresh_token and access_token (Oauth Token).
+
+Because of the fact that Oauth tokens expire every 30 days, we need a refresh token. This refresh token allows us to get a new Oauth token every 30 days when they expire. The merchant will head to our bearer token creation url endpoint. They will enter 3 fields:
+
+Client ID:
+Client Secret:
+Authorization Code:
+
+Internally, we will run a POST request that looks like this when the submit button is pressed:
+`https://connect.squareup.com/oauth2/token?client_id=sq0idp-C2x6C0qA2Nc2hclUqIUnPw&client_secret=sq0csp-S7hrVTPAay7EnNiFbxsZvh3881KK2CEsU1NJG7Rcs1s&grant_type=authorization_code&code=sq0cgp-rluyM1a-PcYv5jPd_znPaQ`
+
+The output will look something like this:
+
+```
+{
+  "access_token": "EAAAEGQk5cfU_hODcAfDZvr1pEOY3yB3clV_SBSKq5bvX_kLJ6TNZm2uRuu2Ub61",
+  "token_type": "bearer",
+  "expires_at": "2021-03-12T23:33:41Z",
+  "merchant_id": "ML1JJ9DG73WYJ",
+  "refresh_token": "EQAAEPhAcT3ltzzzkGSW2sr9fTRGB1RuS31ag131Jcw6vkqb5lIn807-EkFNcTew",
+  "short_lived": false
+}
+```
+
+The `access_token` is our Oauth token for the next 30 days. The `refresh_token` is our token which we will use to create a new Oauth token every 30 days to continue having access to the merchant data allowed above.
+
+We can use this access token (Oauth token) to continually provide our users with digital receiptz.
+
+<!-- WE NEED TO CREATE A LANDING PAGE FOR MERCHANTS TO EASILY GO TO AND PUT IN THE INFORMATION ABOVE (CLIENT ID, CLIENT SECRET, AND AUTHORIZATION CODE. THIS LANDING PAGE WILL GIVE RUN A POST OPERATION AND RETURN A BODY CONTAINING SOMETHING LIKE THIS:
+
+{
+  "access_token": "EAAAEGQk5cfU_hODcAfDZvr1pEOY3yB3clV_SBSKq5bvX_kLJ6TNZm2uRuu2Ub61",
+  "token_type": "bearer",
+  "expires_at": "2021-03-12T23:33:41Z",
+  "merchant_id": "ML1JJ9DG73WYJ",
+  "refresh_token": "EQAAEPhAcT3ltzzzkGSW2sr9fTRGB1RuS31ag131Jcw6vkqb5lIn807-EkFNcTew",
+  "short_lived": false
+}
+
+
+THIS BODY WILL GIVE US OUR REFRESH TOKEN THAT WE WILL NEED FOREVER FOR THAT SPECIFIC MERCHANT.
+) -->
