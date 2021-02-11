@@ -23,6 +23,32 @@ With this object, we will cross check this information, with information about o
 
 Have the merchant sign into their [square developer portal](https://squareup.com/login?app=developer&return_to=https://developer.squareup.com/apps) by using their merchant login credentials.
 
+### Step 2 - The Merchant should add an Application called "ReceiptzApp"
+
+After being signed in, click on the plus button under "Applications".
+
 ![Oauth1](./assets/Oauth1.png)
 
-### Step 2 - The Merchant should add an Application called "ReceiptzApp"
+Type in "ReceiptzApp" into the input field. Then click save.
+
+![Oauth2](./assets/Oauth2.png)
+
+### Step 3 - Open up the ReceiptzApp Application
+
+At this point, the merchant will go into the ReceiptzApp Application.
+
+![Oauth3](./assets/Oauth3.png)
+
+### Step 4 - Head into the Oauth Production section.
+
+From there, click on "production", and then click on "Oauth".
+
+![Oauth4](./assets/Oauth4.png)
+
+### Step 5 - Fill in criteria and and create authorization code.
+
+Type into the Production Redirect URL section: http://receiptzapp.com. Then click save.
+
+![Oauth5](./assets/Oauth5.png)
+
+### Step 6
