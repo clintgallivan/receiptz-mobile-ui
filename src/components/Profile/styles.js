@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from 'helpers/Colors';
 
 const styles = StyleSheet.create({
@@ -25,14 +25,13 @@ const styles = StyleSheet.create({
     //left: 0,
     width: 132,
     height: 132,
-    backgroundColor: Colors.black,//'transparent',
+    backgroundColor: Colors.black, //'transparent',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     //position: "absolute",
   },
   displayName: {
-  
     //top: 0,
     //left: 0,
     //width: 132,
@@ -43,22 +42,22 @@ const styles = StyleSheet.create({
     margin: 10,
     //paddingBottom: 30,
 
-
-    //position: "absolute",
+    //position: "absolute",-
   },
   userName: {
-    fontSize: 22,
-    textAlign: "center",
-    textAlignVertical: "top",
-    fontWeight: 'normal',
-    color: Colors.darkGray
+    fontSize: 24,
+    textAlign: 'center',
+    textAlignVertical: 'top',
+    // fontWeight: 'normal',
+    color: Colors.primaryText,
+    fontFamily: 'AvenirNext-Bold',
   },
   logout: {
     fontSize: 12,
-    textAlign: "center",
-    textAlignVertical: "bottom",
+    textAlign: 'center',
+    textAlignVertical: 'bottom',
     fontWeight: 'normal',
-    color: Colors.darkGray
+    color: Colors.darkGray,
   },
   profileHeader: {
     justifyContent: 'center',
@@ -67,16 +66,78 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'transparent',
     paddingTop: 10,
-
   },
   dataHeaders: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
     padding: 10,
     paddingLeft: 20,
-
-  }
+  },
+  dataHeaderText: {
+    fontFamily: 'AvenirNext-Bold',
+    fontSize: 17,
+    color: Colors.primaryText,
+  },
+  subUserName: {
+    fontSize: 11,
+    textAlign: 'center',
+    color: Colors.inputTextColor,
+    fontFamily: 'AvenirNext-Regular',
+  },
+  line: {
+    backgroundColor: Colors.gray,
+    marginTop: 2,
+    height: 1,
+    flexDirection: 'column',
+    alignSelf: 'stretch',
+    marginHorizontal: 31,
+  },
+  listButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    alignContent: 'stretch',
+    paddingHorizontal: 31,
+  },
+  logout: {
+    // paddingHorizontal: 31,
+    marginHorizontal: 31,
+    marginVertical: 37,
+    alignSelf: 'stretch',
+    // marginTop: 80,
+    alignItems: 'center',
+    backgroundColor: Colors.signupButton,
+    borderRadius: 4,
+  },
+  headerPrimaryStyle: {
+    color: '#606060',
+    // opacity: 1,
+    fontSize: 14,
+    textAlign: 'left',
+    fontFamily: 'AvenirNext-Regular',
+  },
+  headerSecondaryStyle: {
+    color: '#C4C4C4',
+    opacity: 1,
+    fontSize: 11,
+    textAlign: 'left',
+    marginTop: 7,
+    fontFamily: 'AvenirNext-Regular',
+  },
+  addCard: {
+    color: '#606060',
+    fontSize: 11,
+    fontFamily: 'AvenirNext-Regular',
+  },
+  addCardContainer: {
+    // margin: 10,
+    // backgroundColor: 'yellow',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 31,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

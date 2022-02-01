@@ -2,6 +2,7 @@ export default {
   logo: 'RECEIPTZ',
   login: 'Login',
   signup: 'Sign Up',
+  createAccount: 'Create Account',
   firstName: 'First Name',
   lastName: 'Last Name',
   loading: 'Loading',
@@ -10,6 +11,12 @@ export default {
   home: 'Home',
   homeMessage: 'Welcome',
   profile: 'Profile',
-  profileMessage: 'And this one has a nav, but with a different color than the login.',
+  profileMessage:
+    'And this one has a nav, but with a different color than the login.',
   logout: 'Logout',
+  settings: 'Settings',
+  home: 'Receiptz',
+  saved: 'Saved Receiptz',
+  back: 'Back',
+  save: 'Save',
 };
