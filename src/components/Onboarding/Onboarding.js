@@ -35,6 +35,7 @@ const Onboarding = ({navigation}) => {
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <Image
+              style={{width: 200, height: 200}}
               source={require('../../assets/im_onboarding/Onboarding1Pic1.png')}
               // marginTop={42}
             />
